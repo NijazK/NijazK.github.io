@@ -4,9 +4,9 @@ gems:
   - jekyll-paginate
 
 # Site settings
-title: "Mediator"
+title: "Nijaz Kovacevic"
 description: > # this means to ignore newlines until "email:"
-   A Jekyll theme - Medium inspired
+  Quantitative Analysis - Software Engineering - Mathematics
 
 email: nijaz.kovacevic94@gmail.com
 #blog logo
