@@ -3,7 +3,7 @@ layout: post
 title:  "Software QA Automation/Testing (Java)"
 date:   2021-07-16 14:34:25
 categories: mediator feature
-tags: featured
+tags: 
 image: /assets/article_images/2014-11-30-mediator_features/night-track.JPG
 image2: /assets/article_images/2014-11-30-mediator_features/night-track-mobile.JPG
 ---
