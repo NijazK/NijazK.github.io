@@ -6,5 +6,11 @@ categories: jekyll update
 tags: 
 image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
 ---
-## QuantLib Financial Engineering
-#### Repository for financial models used in QuantLib
+## QuantLib Open Source Repository
+#### The QuantLib project is a open-source software that prioritizes comprehensive software framework for quantitative finance. The user can donwload the QuantLib project and have access to a library for modeling, trading, and risk management in real-time. QuantLib is written in C++ with clean object programming using design patterns such as creational, behavioral, and strucutural.
+
+#### * Students can master the library that is used in the real world and contribute to it in a meaningful way.
+#### * Researchers can have a framework at hand which vastly reduces the amount of low-level work necessary to build models.
+#### * Ability to have a sustainable framework for pricing and risk management orices.
+
+#### My research for QuantLib is primarily using the Equity models to price derivatives such as eurpoean options and american options. Other models such as credit derivatives include convertible bonds and floating interes rate bonds.
