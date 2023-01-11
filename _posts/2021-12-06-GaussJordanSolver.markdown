@@ -38,4 +38,27 @@ I want to concentrate on the matrix operations for this portion because it is pr
 	Inverse[i][j]=1;									
 	else											
 	Inverse[i][j]=0;		
+As we see, the algorithm uses two pointers to iterate throught matrices to check if each are equal and squared. These pointers are merely checking the size of the arrays and not computing or doing any matrix operations. 
+	
+	for(k=0;k<sizeOfMatrix;k++)									 
+	{														
+		localVariable=input[k][k];										
+		for(j=0;j<sizeOfMatrix;j++)								
+		{
+			input[k][j]/=localVariable;									
+			Inverse[k][j]/=localVariable;									
 
+		}													
+		for(i=0;i<sizeOfMatrix;i++)									
+		{
+			localVariable = input[i][k];									
+			for(j=0;j<sizeOfMatrix;j++)							
+			{												
+				if(i==k)
+					break;									
+				input[i][j] -= input[k][j]*localVariable;						
+				Inverse[i][j] -= Inverse[k][j]*localVariable;						
+			}
+		}
+	}
+This code snippet shows that when the pointers iterate through the array, while performing operations on each index of the array and the matrix operation will only be satisfied till index [i] is equaled to [k] (where solutions are stored). 
