@@ -4,7 +4,7 @@ title:  "Green Pace Security Development (C++)"
 date:   2021-12-29 14:34:25
 categories: jekyll update
 tags: 
-image: /assets/article_images/2022-29-12-GreenPaceSecurity/GreenPaceSecurity.jpg
+image: /assets/article_images/2021-29-12-GreenPaceSecurity/GreenPaceSecurity.jpg
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve --watch`, which launches a web server and auto-regenerates your site when a file is updated.
 
