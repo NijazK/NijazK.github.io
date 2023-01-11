@@ -4,8 +4,8 @@ title:  "Guass Jordan Elimination Method (C)"
 date:   2021-12-06 14:34:25
 categories: 
 tags: 
-image: 
-image2: 
+image: /assets/article_images/2014-11-30-mediator/night-track.jpg
+image2: /assets/article_images/2014-11-30-mediator/night-track.jpg
 ---
 
 # An algorithm constructed to solve Gauss-Jordan Matrix problems.
