@@ -8,7 +8,7 @@ image: /assets/article_images/2014-11-30-mediator/night-track.jpg
 image2: /assets/article_images/2014-11-30-mediator/night-track.jpg
 ---
 
-# An algorithm constructed to solve Gauss-Jordan Matrix problems.
+## An algorithm constructed to solve Gauss-Jordan Matrix problems.
 
 Introduction: The Gauss-Jordan method is an elimination method used to solve a system of linear equations. The ojective is to perform a process known as reduced row echelon (diagnol matrix) so that the diagnol coefficients are non-zeroes while the rest of the matrix is. The main applications are as follows: 
   * Solving system of linear equations:
@@ -61,4 +61,15 @@ As we see, the algorithm uses two pointers to iterate throught matrices to check
 			}
 		}
 	}
-This code snippet shows that when the pointers iterate through the array, while performing operations on each index of the array and the matrix operation will only be satisfied till index [i] is equaled to [k] (where solutions are stored). 
+This code snippet shows that when the pointers iterate through the array, while performing operations on each index of the array and the matrix operation will only be satisfied till index [i] is equaled to [k] (where solutions are stored). Keeping with uniformity, the same pointer were used to iterate through the matrices to print the final results, inputs, and matrix operations.
+	
+	printf("The inverse matrix is:\n");				
+
+	for(i=0;i<sizeOfMatrix;i++)
+	{
+		for(j=0;j<sizeOfMatrix;j++)
+			printf("%f	",Inverse[i][j]);
+		printf("\n");
+	}
+	return 0;
+From the code above, we see that the pointers i and j will iterate through the array fast and slow to print the inverse matrix using Gauss-Jordan elimination method.
