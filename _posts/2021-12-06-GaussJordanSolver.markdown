@@ -25,4 +25,18 @@ Introduction: The Gauss-Jordan method is an elimination method used to solve a s
 
 This algorithm was part of a project for Linear Algebra course (MAT-350) that utilizes C. The bulk of the project lies within the operations because it has to satsify all system of linear equations who's dimensions are sqaure (column and row are equal). Therefore, the algorithm has to take input of matrix size (n x n), perform matrix operations, then correctly format the final solution. 
 
-I want to concentrate on the matrix operations for this portion because it is priamrily the challenge of the algorithms. The algorithm that was used during the matrix operations was Two pointers.
+I want to concentrate on the matrix operations for this portion because it is priamrily the challenge of the algorithms. The algorithm that was used during the matrix operations was Two pointers. An example can be shown below:
+
+{% highlight ruby %}
+printf("Now enter the matrix:\n");						
+	for(i=0;i<sizeOfMatrix;i++)
+		for(j=0;j<sizeOfMatrix;j++)
+			scanf("%f",&input[i][j]);
+
+	for(i=0;i<sizeOfMatrix;i++)									
+	for(j=0;j<sizeOfMatrix;j++)							
+	if(i==j)										
+	Inverse[i][j]=1;									
+	else											
+	Inverse[i][j]=0;		
+ {% endhighlight %}
