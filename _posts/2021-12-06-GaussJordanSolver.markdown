@@ -27,7 +27,6 @@ This algorithm was part of a project for Linear Algebra course (MAT-350) that ut
 
 I want to concentrate on the matrix operations for this portion because it is priamrily the challenge of the algorithms. The algorithm that was used during the matrix operations was Two pointers. An example can be shown below:
 
-{% highlight ruby %}
 printf("Now enter the matrix:\n");						
 	for(i=0;i<sizeOfMatrix;i++)
 		for(j=0;j<sizeOfMatrix;j++)
@@ -39,4 +38,4 @@ printf("Now enter the matrix:\n");
 	Inverse[i][j]=1;									
 	else											
 	Inverse[i][j]=0;		
- {% endhighlight %}
+
