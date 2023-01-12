@@ -13,9 +13,12 @@ Task was to build test cases centered around an application that creates objects
 
 ### Current Class Requirements
 
+
 #### Contact Class Requirements:
 
-•	The contact object shall have a required unique contact ID string that cannot be longer than 10 char*. Contact ID cannot be null and cannot be updated.
+• The contact object shall have a required unique contact ID string that cannot be longer than 10 char*. 
+
+• Contact ID cannot be null and cannot be updated.
 
 •	Required firstName string that doesn’t exceed 10 characters. Cannot be null.
 
@@ -56,5 +59,72 @@ Task was to build test cases centered around an application that creates objects
 
 ### Methodology
 
+
 My first action was to set up simple pseudocodes for the tests using the same design patterns in the live code. This was to ensure a reusable code process throughout multiple instances, provide a definitive solution(s) for the systems architecture, and provide transparency across all development teams. While this didn’t completely solve all problems, it allowed the testing team to provide clarity to the system and the possibility of building an optimized version. I noticed the source code was using creational design patterns such as Factory pattern and Abstract Factory pattern. This was used during the analysis and requirement phase of the SDLC. In addition, I aimed to keep the test cases and actual code symmetric, so the test cases use a lot of similar patterns as the production code. I should also add that I avoided grouping because of the increased complexity of the requirements. This was to (1. Added additional steps would prevent problems going forward (2. Individual test cases would result in higher percentage coverage.
+
+
+### Actions
+
+
+Contact object class achieved 100% test coverage, contact service had majority of test 100%, Task object class had 66.3% coverage. The task object class was much more complex in design and therefore, such as generateUniqueID() class. 
+For example, this is where Java design patterns really shined as I was able to manufacture new tests for helper methods using the Abstract Factory pattern, along with getters and setters to handle the bulk of exceptions. 
+
+
+    // setter example
+    public void setFirstName (String firstName) {
+	      checkIfGreaterThanTenOrNull(firstName);
+	      this.firstName = firstName;
+     }
+
+    //setter example #2
+    public void setPhoneNumber (String phoneNumber) {
+	      checkifPhoneTenAndNotNull(phoneNumber);
+	      this.phoneNumber = phoneNumber;
+    }
+  
+  
+### Results
+
+
+    ContactTest
+	    testAddress()
+	    lastNameUpdateable()
+	    idGettable()
+	    addressUpdateable()
+	    testLastNull()
+	    testPhoneNull()
+	    addressExceedsThirty()
+	    firstNameUpdateable()
+	    firstNameExceedsTen()
+	    phoneNumberNotTen()
+	    idExceedsTen()
+	    phoneNumberlessThanTen()
+	    testFirstNameNull()
+	    lastNameExceedsTen()
+	    testIdNull()
+	    phoneNumberUpdateable()
+	
+    TaskService:
+	    testAddTask()
+	    testUpdateTask()
+	    testUniqueId()
+	    testDeleteTask()
+	    testReadTaskNotFound()
+
+    TaskTest: 
+	    testNameIsNull()
+	    testNameExceeds()
+	    testIdExceeds()
+	    testTask()
+	    testDescriptionExceeds()
+	    testDescriptionNull()
+	    testSetTaskName()
+	    testSetTaskDescription()
+      
+ 
+### Summary
+
+This was an important project for learning the process of QA testing and the integration of QA with the SDLC among teams. For example, a big concern for me was the process of eliminating bias because, as developers, we want our code to be right and be the standard. Using Java design patterns did aid in the process as it tends to eliminate personal decision making and instead focuses on transparency code and implementation of the current model. Software testing is a crucial part in the SDLC because most firms adopt an agile methodology, tends to increase the software testing in more iterative increments whereas the classical model, waterfall had a single increment of testing near the end. Being part of a team that used agile allowed me to constantly develop and maintain tests in a disciplined manner where cutting corners and finding shortcuts could've been costly for the project. Going forward, researching testing methods for language specific technologies and design patterns before writing tests so that if there is increased complexity within singular methods, the process can be smoother.
+
+
 
