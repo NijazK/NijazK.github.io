@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Guass Jordan Elimination Method (C)"
+title:  "Gauss Jordan Elimination Method (C)"
 date:   2021-12-06 14:34:25
 categories: 
 tags: 
@@ -18,7 +18,7 @@ Introduction: The Gauss-Jordan method is an elimination method used to solve a s
     * Applications for a square matrix in orderr to find the determinant of that system.
   
   * Finding the Inverse of a Matrix:
-    * Guass-jordan eliminitation method allows operations to determine the imverse of a square matrix
+    * Gauss-jordan eliminitation method allows operations to determine the imverse of a square matrix
   
   * Find Ranks and Bases:
     * Use reduced row echelon form to compute ranks and bases of sqaure matrices
