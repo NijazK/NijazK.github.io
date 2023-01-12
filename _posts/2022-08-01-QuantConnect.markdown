@@ -123,3 +123,5 @@ We will start the algorithm by allocating symbols IVV (iShares Core S&P 500) and
                                 self.Log("{0}: Submitted: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
                         if orderEvent.Status == OrderStatus.Filled:
                                 self.Log("{0}: Filled: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
+
+As we can see, there are a lot of different varieties of portfolios that can be created from using QuantConnect. If you should use one of these tests, you can trade live locally to maximize the CPU output (more parameters will use more data points which might restrict trade executions). 
