@@ -13,19 +13,19 @@ Task was to build test cases centered around an application that creates objects
 
 
 #### Contact Class Requirements:
-##
-##
-• The contact object shall have a required unique contact ID string that cannot be longer than 10 characters. 
 
-• Contact ID cannot be null and cannot be updated.
 
-• Required firstName string that doesn’t exceed 10 characters. Cannot be null.
+	• The contact object shall have a required unique contact ID string that cannot be longer than 10 characters. 
 
-• Required lastName string that doesn’t exceed 10 characters. Cannot be null.
+	• Contact ID cannot be null and cannot be updated.
 
-• Required phone string filed that must be (=) to exactly 10 digits. Cannot be null.
+	• Required firstName string that doesn’t exceed 10 characters. Cannot be null.
 
-• Required address field cannot be longer than 30 characters. cannot be null.
+	• Required lastName string that doesn’t exceed 10 characters. Cannot be null.
+
+	• Required phone string filed that must be (=) to exactly 10 digits. Cannot be null.
+
+	• Required address field cannot be longer than 30 characters. cannot be null.
 
 
 #### Contact Service Requirements:
