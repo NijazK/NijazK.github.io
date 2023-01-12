@@ -15,9 +15,13 @@ Task was to build test cases centered around an application that creates objects
 
 Contact Class Requirements:
 •	The contact object shall have a required unique contact ID string that cannot be longer than 10 char*. Contact ID cannot be null and cannot be updated.
-•	Required firstName string that doesn’t exceed 10 characters. Cannot be null
-•	Required lastName string that doesn’t exceed 10 characters. Cannot be null
-•	Required phone string filed that must be (=) to exactly 10 digits. Cannot be null
+
+•	Required firstName string that doesn’t exceed 10 characters. Cannot be null.
+
+•	Required lastName string that doesn’t exceed 10 characters. Cannot be null.
+
+•	Required phone string filed that must be (=) to exactly 10 digits. Cannot be null.
+
 •	Required address field cannot be longer than 30 characters. cannot be null.
 
 
@@ -40,5 +44,5 @@ Task Service Requirements:
 
 ### Methodology
 
-My first action was to set up simple pseudocodes for the tests using popular design patterns in Java. This was to ensure a reusable code process throughout multiple instances, provide a definitive solution(s) for the systems architecture, and provide transparency across all development teams. While this didn’t completely solve all problems, it allowed the testing team to provide clarity to the system and the possibility of building an optimized version. I noticed the source code was using creational design patterns such as Factory pattern and Abstract Factory pattern. This was used during the analysis and requirement phase of the SDLC. In addition, I aimed to keep the test cases and actual code symmetric, so the test cases use a lot of similar patterns as the production code. I should also add that I avoided grouping because of the increased complexity of the requirements. This was to (1. Added additional steps would prevent problems going forward (2. Individual test cases would result in higher percentage coverage.
+My first action was to set up simple pseudocodes for the tests using the same design patterns in the live code. This was to ensure a reusable code process throughout multiple instances, provide a definitive solution(s) for the systems architecture, and provide transparency across all development teams. While this didn’t completely solve all problems, it allowed the testing team to provide clarity to the system and the possibility of building an optimized version. I noticed the source code was using creational design patterns such as Factory pattern and Abstract Factory pattern. This was used during the analysis and requirement phase of the SDLC. In addition, I aimed to keep the test cases and actual code symmetric, so the test cases use a lot of similar patterns as the production code. I should also add that I avoided grouping because of the increased complexity of the requirements. This was to (1. Added additional steps would prevent problems going forward (2. Individual test cases would result in higher percentage coverage.
 
