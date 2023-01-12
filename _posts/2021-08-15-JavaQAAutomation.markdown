@@ -13,7 +13,8 @@ Task was to build test cases centered around an application that creates objects
 
 ### Current Class Requirements
 
-Contact Class Requirements:
+#### Contact Class Requirements:
+
 •	The contact object shall have a required unique contact ID string that cannot be longer than 10 char*. Contact ID cannot be null and cannot be updated.
 
 •	Required firstName string that doesn’t exceed 10 characters. Cannot be null.
@@ -25,22 +26,33 @@ Contact Class Requirements:
 •	Required address field cannot be longer than 30 characters. cannot be null.
 
 
-Contact Service Requirements:
+#### Contact Service Requirements:
+
 •	Contact service shall add contacts with a unique ID
+
 •	Contact service shall be able to delete contacts per contact ID
+
 •	Contact service shall be able to update contact fields per contact ID: the following fields are: firstName, lastName, (Phone) Number, Address.
 
 
-Task Class Requirements:
+#### Task Class Requirements:
+
 •	Task object shall have a required unique ID string that cannot be longer than 10 char*. cannot be null.
-•	Task object shall have a required name String filed that cannot be longer than 20 char*. Cannot be null
+
+•	Task object shall have a required name String filed that cannot be longer than 20 char*. Cannot be null.
+
 •	Task object shall have a required description String filed that cannot be longer than 50mchar*. cannot be null.
 
-Task Service Requirements:
+#### Task Service Requirements:
+
 •	Task service shall be able to add tasks with a unique ID.
+
 •	Task service shall be able to delete tasks per ask ID.
+
 •	Task service shall be able to update task fields per task ID. 
+
 •	Following fields are updateable: Name, Description.
+
 
 ### Methodology
 
