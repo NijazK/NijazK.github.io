@@ -113,16 +113,7 @@ The code snippet below is from the main file that will encrypt or decrypt a stri
 ### Audit Controls and Management
 Every software development effort must be able to provide evidence of compliance for each software deployed
 into any Green Pace managed environment.
-Evidence will include the following:
-
-    * Code compliance to standards.
-    
-    * Well-documented access-control strategies, with sampled evidence of compliance.
-    
-    * Well-documented data-control standards defining the expected security posture of data at rest, in
-      flight, and in use.
-      
-    * Historical evidence of sustained practice (emails, logs, audits, meeting notes).
+Evidence will include the following: Code compliance to standards, Well-documented access-control strategies, with sampled evidence of compliance, Well-documented data-control standards defining the expected security posture of data at rest, in flight, and in use, Historical evidence of sustained practice (emails, logs, audits, meeting notes).
 
 ### Enforcement 
 The office of the chief information security officer (OCISO) will enforce awareness and compliance of this
