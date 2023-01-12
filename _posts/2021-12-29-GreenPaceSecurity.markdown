@@ -34,6 +34,18 @@ This document applies to all staff that create, deploy, or support custom softwa
     9. Use Effective Quality Assurance Techniques.
     10. Adopt a Secure Coding Standard.
 
+### 10 Coding Practices
+A snapshot of the template used by the team to produce the ten coding standard practices.
+![image](https://user-images.githubusercontent.com/75659218/211977464-a0ec8540-3b77-437a-b020-b2c629222068.png)
+Noncompliant Code
+![image](https://user-images.githubusercontent.com/75659218/211977503-1a77d223-9b90-4bc2-909b-febd3c8344b5.png)
+Compliant Code
+![image](https://user-images.githubusercontent.com/75659218/211977554-ed6d203c-3261-46dd-9804-19458f01f4eb.png)
+Threat Level
+![image](https://user-images.githubusercontent.com/75659218/211977586-65d2d0b6-c512-4df8-9b40-b33c6ec00f10.png)
+Automation
+![image](https://user-images.githubusercontent.com/75659218/211977607-27b686d7-9db2-418b-8473-580927554f12.png)
+
 
 ### Encryption   
 
