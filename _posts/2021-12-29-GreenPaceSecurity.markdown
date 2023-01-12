@@ -46,6 +46,9 @@ Threat Level
 Automation
 ![image](https://user-images.githubusercontent.com/75659218/211977607-27b686d7-9db2-418b-8473-580927554f12.png)
 
+10 coding standards (C++)
+![image](https://user-images.githubusercontent.com/75659218/212163057-ba561e7e-ccbc-4c0c-9c18-5ced9e0cf883.png)
+
 
 ### Encryption   
 
