@@ -6,7 +6,9 @@ categories: jekyll update
 tags: 
 image: /assets/article_images/2022-05-12-QuantLib/QuantLib.jpg
 ---
-## QuantLib Open Source Repository
+
+## QuantLib Financial Engineering Models.
+
 The QuantLib project is a open-source software that prioritizes comprehensive software framework for quantitative finance. The user can donwload the QuantLib project and have access to a library for modeling, trading, and risk management in real-time. QuantLib is written in C++ with clean object programming using design patterns such as creational, behavioral, and strucutural.
 
   * Students can master the library that is used in the real world and contribute to it in a meaningful way.
