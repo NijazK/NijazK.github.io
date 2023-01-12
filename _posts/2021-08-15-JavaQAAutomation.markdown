@@ -9,14 +9,12 @@ image2: /assets/article_images/2014-11-30-mediator_features/night-track-mobile.J
 ---
 ## QA Automation Tests using Java and JUnit suites in Eclipse.
 
-
 Task was to build test cases centered around an application that creates objects such as appointments, tasks, and contacts. Questions that will be answered throughout the software lifecycle were: How can i ensure that my code, program, and software is functional and secure? How do I interpret user needs and incorporate them into a program? How would I approach software design?
 
 
 #### Contact Class Requirements:
-
-
-
+##
+##
 • The contact object shall have a required unique contact ID string that cannot be longer than 10 characters. 
 
 • Contact ID cannot be null and cannot be updated.
@@ -31,9 +29,8 @@ Task was to build test cases centered around an application that creates objects
 
 
 #### Contact Service Requirements:
-
-
-
+#
+#
 • Contact service shall add contacts with a unique ID
 
 • Contact service shall be able to delete contacts per contact ID
