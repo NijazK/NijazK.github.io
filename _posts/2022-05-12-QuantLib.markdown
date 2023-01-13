@@ -19,12 +19,56 @@ My research for QuantLib is primarily using the Equity models to price derivativ
 
 ### Equity Options
 
-Example 1: Black-Scholes European Option
+#### Example 1: Black-Scholes European Option.
 Assume we are purchasing a European call option for TSLA with a strike price $14.38 maturing on May 15th, 2016. Assume the spot price $12.80, the volatility is 20%, and dividend yield of 1.63%. Short term risk free 0.01%. We shall value this option October 5, 2015.
 ![image](https://user-images.githubusercontent.com/75659218/212205215-49871f6b-7335-48c0-95d1-d527502ff7c5.png)
 We see that the theoretical price of the option is 0.24 using the AnalyticEuropeanEngine().
 
-Example 2: Binomial Tree Model for TSLA European Option
+#### C++ Implementation.
+        // our options
+        Option::Type type(Option::Put);
+        Real underlying = 36;
+        Real strike = 40;
+        Spread dividendYield = 0.00;
+        Rate riskFreeRate = 0.06;
+        Volatility volatility = 0.20;
+        Date maturity(17, May, 1999);
+        DayCounter dayCounter = Actual365Fixed();
+
+        std::cout << "Option type = "  << type << std::endl;
+        std::cout << "Maturity = "        << maturity << std::endl;
+        std::cout << "Underlying price = "        << underlying << std::endl;
+        std::cout << "Strike = "                  << strike << std::endl;
+        std::cout << "Risk-free interest rate = " << io::rate(riskFreeRate)
+                  << std::endl;
+        std::cout << "Dividend yield = " << io::rate(dividendYield)
+                  << std::endl;
+        std::cout << "Volatility = " << io::volatility(volatility)
+                  << std::endl;
+        std::cout << std::endl;
+        std::string method;
+        std::cout << std::endl ;
+        
+        
+        // options
+        VanillaOption europeanOption(payoff, europeanExercise);
+        VanillaOption bermudanOption(payoff, bermudanExercise);
+        VanillaOption americanOption(payoff, americanExercise);
+
+        // Analytic formulas:
+
+        // Black-Scholes for European
+        method = "Black-Scholes";
+        europeanOption.setPricingEngine(ext::shared_ptr<PricingEngine>(
+                                     new AnalyticEuropeanEngine(bsmProcess)));
+        std::cout << std::setw(widths[0]) << std::left << method
+                  << std::fixed
+                  << std::setw(widths[1]) << std::left << europeanOption.NPV()
+                  << std::setw(widths[2]) << std::left << "N/A"
+                  << std::setw(widths[3]) << std::left << "N/A"
+                  << std::endl;
+
+#### Example 2: Binomial Tree Model for TSLA European Option.
 Let's use the information from above to construct a binomial tree.
 ![image](https://user-images.githubusercontent.com/75659218/212207366-9378679b-f997-4235-a8b0-0b1d1c2431eb.png)
 We still use the information from above, however, we do use a function to create the binomial tree named binomial_price. The code snippet below shows the convergence of the binomial tree comapring the price and bsm process.
