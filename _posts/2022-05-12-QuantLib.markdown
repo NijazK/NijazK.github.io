@@ -104,7 +104,7 @@ We still use the information from above, however, we do use a function to create
 ![image](https://user-images.githubusercontent.com/75659218/212207566-ba9b78a6-ffb8-4f92-baaa-75a1a7c709e8.png)
 ![image](https://user-images.githubusercontent.com/75659218/212207984-27a43160-9398-4546-9d35-66c0552fb382.png)
 
-C++ Implementation:
+#### C++ Implementation:
 
         // Binomial method: Additive equiprobabilities
         method = "Additive equiprobabilities";
