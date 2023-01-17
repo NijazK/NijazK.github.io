@@ -22,10 +22,10 @@ My research for QuantLib is primarily using the Equity models to price derivativ
 #### Example 1: Black-Scholes European Option.
 The Black-Scholes-Merton is a pricing model used for financial instruments. It is primarily used in stock option valuation by determining the valuation of an asset (call option) with six variables: volatility, type, underlying stock price, strike price, and risk-free rate. Below is the example we use to demonstrate the principle of hedging to eliminate risk. The Black-Scholes model is eesentially a second order partial differential equation:
 
-<img width="501" alt="Screenshot 2023-01-17 at 3 24 30 PM" src="https://user-images.githubusercontent.com/75659218/213034548-30dbf9a4-3776-468c-aa68-2a993552a08d.png">
+<img width="501" alt= src="https://user-images.githubusercontent.com/75659218/213034548-30dbf9a4-3776-468c-aa68-2a993552a08d.png">
 Where we price the call option:
 
-<img width="518" alt="Screenshot 2023-01-17 at 3 25 41 PM" src="https://user-images.githubusercontent.com/75659218/213034693-584f636f-8558-46c8-9682-ccc69893509c.png">
+<img width="518" alt= src="https://user-images.githubusercontent.com/75659218/213034693-584f636f-8558-46c8-9682-ccc69893509c.png">
 
 
 
