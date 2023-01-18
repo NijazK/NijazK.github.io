@@ -23,12 +23,51 @@ My research for QuantLib is primarily using the Equity models to price derivativ
 The Black-Scholes-Merton is a pricing model used for financial instruments. It is primarily used in stock option valuation by determining the valuation of an asset (call option) with six variables: volatility, type, underlying stock price, strike price, and risk-free rate. Below is the example we use to demonstrate the principle of hedging to eliminate risk. The Black-Scholes model is eesentially a second order partial differential equation:
 
 <img width="501" alt="" src="https://user-images.githubusercontent.com/75659218/213034548-30dbf9a4-3776-468c-aa68-2a993552a08d.png">
+
+
 Where we price the call option:
+
 
 <img width="518" alt="" src="https://user-images.githubusercontent.com/75659218/213034693-584f636f-8558-46c8-9682-ccc69893509c.png">
 
+#### Calculating D1 and D2:
+
+<img width="469" alt="" src="https://user-images.githubusercontent.com/75659218/213037954-854be47a-026b-4254-9ae8-00262643c1ca.png">
+
+<img width="269" alt="" src="https://user-images.githubusercontent.com/75659218/213037992-7a136d2e-4b5d-4262-b03b-87bb9678805e.png">
+
+<img width="271" alt="" src="https://user-images.githubusercontent.com/75659218/213038077-6bd1ca24-52a0-4ccc-b706-05302e2df980.png">
+
+#### Using Geometric Brownian Motion:
+Underlying stock prices can be framed as a GBM process which follows a random walk. Therefore, let's denote the process as a stochastic differential and Ito's Lemma. Where the mu is the drift, the sigma is the volatility, and the Z is the standard normal random variable.
+
+<img width="333" alt="" src="https://user-images.githubusercontent.com/75659218/213042372-6eafa809-f0be-4b34-8959-49f31940f432.png">
+
+<img width="430" alt="" src="https://user-images.githubusercontent.com/75659218/213042725-8d7d8d84-58bb-42ba-bbd0-58053410fa93.png">
+
+#### Python Pricing Engine
+    import numpy as np  
+    import scipy.stats as stats 
+    import matplotlib.pyplot as plt
+
+    # variables
+    spot_price = 100 
+    risk_free_rate = 0.05  
+    volatility = 0.20  
+    strike_price = 105
+    maturity_date = 1.0  
+    total_paths = 500
+    Z_standard = np.random.normal(size = total_paths) 
+
+    ST = spot_price * np.exp((risk_free_rate - 0.5 * volatility**2) * maturity_date + volatility * np.sqrt(maturity_date)* Z_standard)  
+    plt.hist(ST, bins='auto')  
+    plt.xlabel('Price')
+    plt.ylabel('Freq')
+    
+![](https://user-images.githubusercontent.com/75659218/213057860-660a160b-787e-4775-9040-b20715b3a071.png)
 
 
+#### Using the QuantLib engine.
 Assume we are purchasing a European call option for TSLA with a strike price $14.38 maturing on May 15th, 2016. Assume the spot price $12.80, the volatility is 20%, and dividend yield of 1.63%. Short term risk free 0.01%. We shall value this option October 5, 2015.
 ![image](https://user-images.githubusercontent.com/75659218/212205215-49871f6b-7335-48c0-95d1-d527502ff7c5.png)
 We see that the theoretical price of the option is 0.24 using the AnalyticEuropeanEngine().
