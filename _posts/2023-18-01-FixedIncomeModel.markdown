@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "Fixed Rate Models (C++, Python)"
-date:   2021-12-29 14:34:25
+date:   2023-18-01 14:34:25
 categories: jekyll update
 tags: 
 image: /assets/article_images/2023-18-01-FixedRateModel/FixedRateModel.jpg
 ---
-## Modeling fixed rate instruments using industry standard practices.
+Modeling fixed rate instruments using industry standard practices.
 
 #### Fixed Rate Bond
 Let's assume a simple example for fixed rate bonds. Consider a bond with a par value of $100000, that pays 7% coupon semi-annually, issued on January 15th, 2015 and set to mature on January 15th, 2016. The bond will pay a coupon on July 15th, 2015 and January 15th, 2016. The par amount of 100000 will also be paid on the January 15th, 2016. The spot rates for the bond is 0.6% semi annually and 0.8% anually. 
@@ -29,7 +29,7 @@ DiscountBondEngine():
 
 Final yields:
 
-    fixed_rate_bond.NPV()
+    print(fixed_rate_bond)
     99310.83761241747
     
 
