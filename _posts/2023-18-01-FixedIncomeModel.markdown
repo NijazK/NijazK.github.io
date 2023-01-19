@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Fixed Rate Models (C++, Python)"
-date:   2023-18-01 14:34:25
+date:   2023-01-18 14:34:25
 categories: jekyll update
 tags: 
 image: /assets/article_images/2023-18-01-FixedRateModel/FixedRateModel.jpg
