@@ -38,25 +38,7 @@ Where we price the call option:
 
 <img width="271" alt="" src="https://user-images.githubusercontent.com/75659218/213038077-6bd1ca24-52a0-4ccc-b706-05302e2df980.png">
 
-#### Python Pricing Engine
-    import numpy as np  
-    import scipy.stats as stats 
-    import matplotlib.pyplot as plt
 
-    # variables
-    spot_price = 12.80 
-    risk_free_rate = 0.001  
-    volatility = 0.20  
-    strike_price = 14.38
-    maturity_date = 1.0  
-    total_paths = 500
-    Z_standard = np.random.normal(size = total_paths) 
-
-    ST = spot_price * np.exp((risk_free_rate - 0.5 * volatility**2) * maturity_date + volatility * np.sqrt(maturity_date)* Z_standard)  
-    plt.hist(ST, bins='auto')  
-    plt.xlabel('Price')
-    plt.ylabel('Freq')
-    
 ![](https://user-images.githubusercontent.com/75659218/213057860-660a160b-787e-4775-9040-b20715b3a071.png)
 
 #### Using Python for Black-Scholes
