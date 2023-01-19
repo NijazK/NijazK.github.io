@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Fixed Rate Modeling (C++, Python)"
+title:  "Fixed Rate Models (C++, Python)"
 date:   2021-12-29 14:34:25
 categories: jekyll update
 tags: 
