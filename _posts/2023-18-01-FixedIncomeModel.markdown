@@ -5,6 +5,7 @@ date:   2023-01-18 14:34:25
 categories: jekyll update
 tags: 
 image: /assets/article_images/2023-18-01-FixedRateModel/FixedRateModel.jpg
+image2: /assets/article_images/2023-18-01-FixedRateModel/FixedRateModel-mobile.jpg
 ---
 Modeling fixed rate instruments using industry standard practices.
 
