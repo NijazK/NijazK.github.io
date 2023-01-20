@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Gauss Jordan Elimination Method (C)"
-date:   2021-12-06 14:34:25
+date:   2021-10-01 14:34:25
 categories: 
 tags: 
 image: /assets/article_images/2014-11-30-mediator/night-track.jpg
