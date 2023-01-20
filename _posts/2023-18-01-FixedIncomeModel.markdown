@@ -47,11 +47,47 @@ Callable bonds have similarities with fixed rate bonds with an extra parameter, 
             callability_price  = ql.BondPrice(call_price, ql.BondPrice.Clean)
             callability_schedule.append(ql.Callability(callability_price, Callability.Call, call_date))
             call_date = null_calendar.advance(call_date, 3, Months)
-            
+
+#### C++ Implementation using QuantLib
+
+        Date dated = Date(16,September,2004);
+        Date issue = dated;
+        Date maturity = Date(15,September,2012);
+        Natural settlementDays = 3;  // Bloomberg OAS1 settle is Oct 19, 2007
+        Calendar bondCalendar = UnitedStates(UnitedStates::GovernmentBond);
+        Real coupon = .0465;
+        Frequency frequency = Quarterly;
+        Real redemption = 100.0;
+        Real faceAmount = 100.0;
+
 We then initialize the callable bond with the CallableFixedRateBond class within QuantLib, which accepts inputs same as a fixed rate bond with additional call or put schedule.
-        
+
+
         bond = CallableFixedRateBond(settlement_days, face_amount, schedule, [coupon], accrual_daycount, Following, face_amount, issue_date, callability_schedule)
-        
+
+
+
+C++ Implementation for a call schedule using QuantLib
+
+
+       CallabilitySchedule callSchedule;
+        Real callPrice = 100.;
+        Size numberOfCallDates = 24;
+        Date callDate = Date(15,September,2006);
+
+        for (Size i=0; i< numberOfCallDates; i++) {
+            Calendar nullCalendar = NullCalendar();
+
+            Bond::Price myPrice(callPrice, Bond::Price::Clean);
+            callSchedule.push_back(
+                ext::make_shared<Callability>(
+                                    myPrice,
+                                    Callability::Call,
+                                    callDate ));
+            callDate = nullCalendar.advance(callDate, 3, Months);
+        }
+
+
 Now we need an interest rate model for the callable bond because we need to take in two additional parameters; \mu as a mean reversion (3%) and volatility \sigma (12%). 
 
         
@@ -67,7 +103,12 @@ Now we need an interest rate model for the callable bond because we need to take
 
 ![](https://user-images.githubusercontent.com/75659218/213588206-11fb5739-b695-469e-8036-7f2c21f29c9e.png)
 
-As we see the yield curve has a downward slope because if the volatility is increased, the bond value has a higher chance of being callable.
+![](https://user-images.githubusercontent.com/75659218/213615844-72b3a17f-f75e-454b-af36-6551476d42d5.png)
+
+
+As we see the yield curve has a downward slope because if the volatility is increased, the bond value has a higher chance of being callable. Callable bonds are essentially an option call, so there is a decay factor that accounts for sensitive volatility levels (sigma) as it does get closer to maturity. Using the Macauley Duration formula, we can check volatility levels at any settlement period.
+![](https://user-images.githubusercontent.com/75659218/213620640-c87d00c3-d4a7-4b73-8d36-58b46cfabc33.png)
+
 
         
         
