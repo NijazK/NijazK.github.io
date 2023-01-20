@@ -81,4 +81,4 @@ This code snippet shows that when the pointers iterate through the array, while 
 	return 0;
 	
 	
-From the code above, we see that the pointers i and j will iterate through the array fast and slow to print the inverse matrix using Gauss-Jordan elimination method.
+From the code above, we see that the pointers i and j will iterate through the array fast and slow to print the inverse matrix using the Gauss-Jordan elimination method.
