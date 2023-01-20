@@ -9,7 +9,7 @@ image: /assets/article_images/2023-18-01-FixedRateModel/FixedRateModel.jpg
 Modeling fixed rate instruments using industry standard practices.
 
 #### Fixed Rate Bond
-Let's assume a simple example for fixed rate bonds. Consider a bond with a par value of $100000, that pays 7% coupon semi-annually, issued on January 15th, 2015 and set to mature on January 15th, 2016. The bond will pay a coupon on July 15th, 2015 and January 15th, 2016. The par amount of 100000 will also be paid on the January 15th, 2016. The spot rates for the bond is 0.6% semi annually and 0.8% anually. 
+Let's assume a simple example of fixed-rate bonds. Consider a bond with a par value of $100000, that pays a 7% coupon semi-annually, issued on January 15th, 2015, and set to mature on January 15th, 2016. The bond will pay a coupon on July 15th, 2015, and January 15th, 2016. The par amount of 100000 will also be paid on January 15th, 2016. The spot rates for the bond are 0.6% semi-annually and 0.8% annually. 
 First, we construct a yield curve with given spot rates using ZeroCurve from QuantLib. After, we will build a fixed rate object and in doing so, we need a stored array of coupon payments so the FixedRateBond() can pass as parameters. 
 
 FixedRateBond():
@@ -20,7 +20,7 @@ FixedRateBond():
     face_value = 100000
     fixed_rate_bond = FixedRateBond(settlement_days, face_value, schedule, coupons, day_count)
 
-Now, lets; use the QuantLib valuation engine DiscountBondEngine() to properly price the example bond. The DiscountBondEngine() takes the yield curve object as an argument
+Let's use the QuantLib valuation engine DiscountBondEngine() to properly price the bond. The DiscountBondEngine() takes the yield curve object as an argument:
 
 DiscountBondEngine():
 
@@ -37,7 +37,7 @@ Final yields:
 A callable bond is a type of fixed instrument that provides the issuer of the bond with the right to redeem the bond before its maturity date. Callable bonds usually have restrictions such as bonds may not be able to be redeemed ina specified initial period of their lifespan. A simple example of a callable bond is assume we have a 10 year maturity bond where the first 5 years of maturity have not call option, but the 6th - 10th year have a reddemable call option if the interest rate decreases. This is how we find value of a callable bond Price(Callable bond) = Price(plain - Vanilla Option) - Price(call Option) where the price of the vanilla bond shares similarities with the callable bond and the price of the call option to redeem the bond before maturity.
 
 #### Modeling a Callable Bond
-Callable bonds have similarities with fixed rate bonds with an extra parameter, which is a call or put scheduler. For this example, we assume a flat yield curve of 3.5%. The call price is at $1,000 and we use the container Callability.Call because it is a call option not a put option.
+Callable bonds have similarities with fixed rate bonds with an extra parameter, which is a call or put scheduler. For this example, we assume a flat yield curve of 3.5%. The call price is $1,000 and we use the container Callability. Call because it is a call option, not a put option.
 
         callability_schedule = CallabilitySchedule()
         call_price = 1000.0
@@ -67,7 +67,7 @@ We then initialize the callable bond with the CallableFixedRateBond class within
 
 
 
-C++ Implementation for a call schedule using QuantLib
+#### C++ Implementation for a call schedule using QuantLib
 
 
        CallabilitySchedule callSchedule;
@@ -88,7 +88,7 @@ C++ Implementation for a call schedule using QuantLib
         }
 
 
-Now we need an interest rate model for the callable bond because we need to take in two additional parameters; \mu as a mean reversion (3%) and volatility \sigma (12%). 
+Now, we need an interest rate model for the callable bond because we need to take in two additional parameters; \mu as a mean reversion (3%) and volatility \sigma (12%). 
 
         
         def value_bond(a, s, grid_points, bond): 
@@ -106,7 +106,7 @@ Now we need an interest rate model for the callable bond because we need to take
 ![](https://user-images.githubusercontent.com/75659218/213615844-72b3a17f-f75e-454b-af36-6551476d42d5.png)
 
 
-As we see the yield curve has a downward slope because if the volatility is increased, the bond value has a higher chance of being callable. Callable bonds are essentially an option call, so there is a decay factor that accounts for sensitive volatility levels (sigma) as it does get closer to maturity. Using the Macauley Duration formula, we can check volatility levels at any settlement period.
+As we see the yield curve has a downward slope because if the volatility is increased, the bond value has a higher chance of being callable. Callable bonds are essentially option calls, so there is a decay factor that accounts for sensitive volatility levels (sigma) as it does get closer to maturity. Using the Macauley Duration formula, we can check volatility levels at any settlement period.
 ![](https://user-images.githubusercontent.com/75659218/213620640-c87d00c3-d4a7-4b73-8d36-58b46cfabc33.png)
 
 
