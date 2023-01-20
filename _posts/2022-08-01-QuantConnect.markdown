@@ -5,6 +5,7 @@ date:   2022-08-15 14:34:25
 categories: jekyll update
 tags: 
 image: /assets/article_images/2022-08-01-QuantConnect/QuantConnect.jpg
+image2: /assets/article_images/2022-08-01-QuantConnect/QuantConnect-mobile.jpg
 ---
 ## QuantConnect Algorithm Research
 
