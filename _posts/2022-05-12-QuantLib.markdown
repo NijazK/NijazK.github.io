@@ -9,7 +9,7 @@ image: /assets/article_images/2022-05-12-QuantLib/QuantLib.jpg
 
 ## Various Stochastic Models used in Options Theory.
 
-The QuantLib project is a open-source software that prioritizes comprehensive software framework for quantitative finance. The user can donwload the QuantLib project and have access to a library for modeling, trading, and risk management in real-time. QuantLib is written in C++ with clean object programming using design patterns such as creational, behavioral, and strucutural.
+The QuantLib project is open-source software that prioritizes a comprehensive software framework for quantitative finance. The user can download the QuantLib project and have access to a library for modeling, trading, and risk management in real time. QuantLib is written in C++ with clean object programming using design patterns such as creational, behavioral, and structural.
 
   * Students can master the library that is used in the real world and contribute to it in a meaningful way.
   * Researchers can have a framework at hand which vastly reduces the amount of low-level work necessary to build models.
@@ -20,7 +20,7 @@ My research for QuantLib is primarily using the Equity models to price derivativ
 ### Equity Options
 
 #### Example 1: Black-Scholes European Option.
-The Black-Scholes-Merton is a pricing model used for financial instruments. It is primarily used in stock option valuation by determining the valuation of an asset (call option) with six variables: volatility, type, underlying stock price, strike price, and risk-free rate. Below is the example we use to demonstrate the principle of hedging to eliminate risk. The Black-Scholes model is eesentially a second order partial differential equation:
+The Black-Scholes-Merton is a pricing model used for financial instruments. It is primarily used in stock option valuation by determining the valuation of an asset (call option) with six variables: volatility, type, underlying stock price, strike price, and the risk-free rate. Below is the example we use to demonstrate the principle of hedging to eliminate risk. The Black-Scholes model is essentially a second-order partial differential equation:
 
 <img width="501" alt="" src="https://user-images.githubusercontent.com/75659218/213034548-30dbf9a4-3776-468c-aa68-2a993552a08d.png">
 
@@ -54,7 +54,7 @@ Where we price the call option:
 As we see from the code above, we successfully modeled a black-scholes european cal option by calculating the d1 and d2 functions with the original six variables.
 
 #### Using Geometric Brownian Motion:
-Underlying stock prices can be framed as a GBM process which follows a random walk. Therefore, let's denote the process as a stochastic differential and Ito's Lemma. Where the mu is the drift, the sigma is the volatility, and the Z is the standard normal random variable.
+Underlying stock prices can be framed as a GBM process that follows a random walk. Therefore, let's denote the process as a stochastic differential and Ito's Lemma. Where the mu is the drift, the sigma is the volatility, and the Z is the standard normal random variable.
 
 <img width="333" alt="" src="https://user-images.githubusercontent.com/75659218/213042372-6eafa809-f0be-4b34-8959-49f31940f432.png">
 
@@ -70,7 +70,7 @@ In the Monte Carlo simulation, we will use call_option to model the first equati
 
 
 #### Using the QuantLib engine.
-Assume we are purchasing a European call option for TSLA with a strike price $14.38 maturing on May 15th, 2016. Assume the spot price $12.80, the volatility is 20%, and dividend yield of 1.63%. Short term risk free 0.01%. We shall value this option October 5, 2015.
+Assume we are purchasing a European call option for TSLA with a strike price of $14.38 maturing on May 15th, 2016. Assume the spot price is $12.80, the volatility is 20%, and the dividend yield of 1.63%. Short-term risk-free 0.01%. We shall value this option on October 5, 2015.
 ![](https://user-images.githubusercontent.com/75659218/212205215-49871f6b-7335-48c0-95d1-d527502ff7c5.png)
 We see that the theoretical price of the option is 0.24 using the AnalyticEuropeanEngine().
 
