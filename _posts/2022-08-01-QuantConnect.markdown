@@ -52,7 +52,7 @@ Here is an example of the program class where we initialize the start date, end 
               return [x.Symbol for x in sortedByDollarVolume[:100]]
 
 
-This portion of the algorithm will execute the desired paramters of the quantitative trader. The beuaty within thos framework is the quantitative trader can set boundaries as to where they buy (stocks, sector, asset classes), whom they buy from (brokers), and what they buy (paramters such as PE Ratio, Earnings volume, and Trading volume). In the above example, we pass a function SelectCoarse(self, algorithm, coarse) with parameters of self, algorthm, and caorse universe data to set parameters on asset classes that are stocks, and that have relatively low dollar volume, which will correlate with a lower PE Ratio. 
+This portion of the algorithm will execute the desired parameters of the quantitative trader. The convenience within this framework is that quantitative traders can set boundaries as to where they buy (stocks, sector, asset classes), whom they buy from (brokers), and what they buy (parameters such as PE Ratio, Earnings volume, and Trading volume). In the above example, we pass a function SelectCoarse(self, algorithm, coarse) with parameters of self, algorithm, and coarse universe data to set parameters on asset classes that are stocks, and that have relatively low dollar volume, which will correlate with a lower PE Ratio. 
 
 Example (2): BlackRock ETF Regressional iShares Model
 
@@ -124,4 +124,4 @@ We will start the algorithm by allocating symbols IVV (iShares Core S&P 500) and
                         if orderEvent.Status == OrderStatus.Filled:
                                 self.Log("{0}: Filled: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
 
-As we can see, there are a lot of different varieties of portfolios that can be created from using QuantConnect. If you should use one of these tests, you can trade live locally to maximize the CPU output (more parameters will use more data points which might restrict trade executions). 
+As we can see, there are a lot of different varieties of portfolios that can be created by using QuantConnect. If you should use one of these tests, you can trade live locally to maximize the CPU output (more parameters will use more data points which might restrict trade executions).
