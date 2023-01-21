@@ -13,7 +13,7 @@ QuantConnect is an open-source financial technology platform that is currently p
 
 This repository aims at illustrating the convenience of backtesting and active portfolio management using the Python engine. More specifically, it will ustilize the backtesting and cloud research platforms that are supported by QuantConnect. Popular trading strategies include: Buy and hold, Pairs trading, ETF weighing, mean-reversion, and momentum-based strategies. I should also include that the repository does contain course solutions for the equities, forex, and options course. 
 
-Example (1): Liquid Value Stocks
+#### Example (1): Liquid Value Stocks
 
         from AlgorithmImports import *
         from Selection.FundamentalUniverseSelectionModel import FundamentalUniverseSelectionModel
