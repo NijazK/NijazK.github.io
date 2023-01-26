@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "QuantConnect Algorithm Research"
+title:  "Quantitative Trading Algorithms (Python)"
 date:   2022-08-15 14:34:25
 categories: jekyll update
 tags: 
