@@ -66,52 +66,54 @@ Automation
         rest/flight.
 
 The code snippet below is from the main file that will encrypt or decrypt a string using the provided key.
-    
-    // Encryption.cpp : This file contains the 'main' function. Program execution begins and ends there.
-    // Author: Nijaz Kovacevic
-    // Encryption for Green Pace Security
 
-    #include <cassert>
-    #include <fstream>
-    #include <iomanip>
-    #include <iostream>
-    #include <sstream>
-    #include <ctime>
-    #include <time.h>
-    #pragma warning(disable : 4996)
+{% highlight C++ %}
+// Encryption.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Author: Nijaz Kovacevic
+// Encryption for Green Pace Security
 
-    /// <summary>
-    /// encrypt or decrypt a source string using the provided key
-    /// </summary>
-    /// <param name="source">input string to process</param>
-    /// <param name="key">key to use in encryption / decryption</param>
-    /// <returns>transformed string</returns>
-    std::string encrypt_decrypt(const std::string& source, const std::string& key)
-    {
-        // get lengths now instead of calling the function every time.
-        // this would have most likely been inlined by the compiler, but design for perfomance.
-        const auto key_length = key.length();
-        const auto source_length = source.length();
+#include <cassert>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <ctime>
+#include <time.h>
+#pragma warning(disable : 4996)
 
-        // assert that our input data is good
-        assert(key_length > 0);
-        assert(source_length > 0);
+/// <summary>
+/// encrypt or decrypt a source string using the provided key
+/// </summary>
+/// <param name="source">input string to process</param>
+/// <param name="key">key to use in encryption / decryption</param>
+/// <returns>transformed string</returns>
+std::string encrypt_decrypt(const std::string& source, const std::string& key)
+{
+    // get lengths now instead of calling the function every time.
+    // this would have most likely been inlined by the compiler, but design for perfomance.
+    const auto key_length = key.length();
+    const auto source_length = source.length();
 
-        std::string output = source;
+    // assert that our input data is good
+    assert(key_length > 0);
+    assert(source_length > 0);
 
-        // loop through the source string char by char
-        for (size_t i = 0; i < source_length; ++i)
-        { // TODO: student need to change the next line from output[i] = source[i]
-          // transform each character based on an xor of the key modded constrained to key length using a mod
-            output[i] = source[i] ^ key[i % key_length];
-        }
+    std::string output = source;
 
-        // our output length must equal our source length
-        assert(output.length() == source_length);
-
-        // return the transformed string
-        return output;
+    // loop through the source string char by char
+    for (size_t i = 0; i < source_length; ++i)
+    { // TODO: student need to change the next line from output[i] = source[i]
+     // transform each character based on an xor of the key modded constrained to key length using a mod
+        output[i] = source[i] ^ key[i % key_length];
     }
+
+    // our output length must equal our source length
+    assert(output.length() == source_length);
+
+    // return the transformed string
+    return output;
+ }
+ {% endhighlight %}
 
 ### Triple A Framework
 
