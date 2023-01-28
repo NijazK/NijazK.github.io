@@ -15,24 +15,29 @@ First, we construct a yield curve with given spot rates using ZeroCurve from Qua
 
 FixedRateBond():
 
+{% highlight Python %}
     coupon_rate = .07
     coupons = [coupon_rate]
     settlement_days = 0
     face_value = 100000
     fixed_rate_bond = FixedRateBond(settlement_days, face_value, schedule, coupons, day_count)
+{% endhighlight %}
 
 Let's use the QuantLib valuation engine DiscountBondEngine() to properly price the bond. The DiscountBondEngine() takes the yield curve object as an argument:
 
 DiscountBondEngine():
 
+{% highlight Python %}
     bond_engine = DiscountingBondEngine(spot_curve_handle)
     fixed_rate_bond.setPricingEngine(bond_engine)
+{% endhighlight %}
 
 Final yields:
 
+{% highlight Python %}
     print(fixed_rate_bond)
     99310.83761241747
-    
+{% endhighlight %}    
 
 #### Callable Bonds
 A callable bond is a type of fixed instrument that provides the issuer of the bond with the right to redeem the bond before its maturity date. Callable bonds usually have restrictions such as bonds may not be able to be redeemed ina specified initial period of their lifespan. A simple example of a callable bond is assume we have a 10 year maturity bond where the first 5 years of maturity have not call option, but the 6th - 10th year have a reddemable call option if the interest rate decreases. This is how we find value of a callable bond Price(Callable bond) = Price(plain - Vanilla Option) - Price(call Option) where the price of the vanilla bond shares similarities with the callable bond and the price of the call option to redeem the bond before maturity.
@@ -40,6 +45,7 @@ A callable bond is a type of fixed instrument that provides the issuer of the bo
 #### Modeling a Callable Bond
 Callable bonds have similarities with fixed rate bonds with an extra parameter, which is a call or put scheduler. For this example, we assume a flat yield curve of 3.5%. The call price is $1,000 and we use the container Callability. Call because it is a call option, not a put option.
 
+{% highlight Python %}
         callability_schedule = CallabilitySchedule()
         call_price = 1000.0
         call_date = Date(15, September, 2016); 
@@ -48,9 +54,11 @@ Callable bonds have similarities with fixed rate bonds with an extra parameter, 
             callability_price  = ql.BondPrice(call_price, ql.BondPrice.Clean)
             callability_schedule.append(ql.Callability(callability_price, Callability.Call, call_date))
             call_date = null_calendar.advance(call_date, 3, Months)
+{% endhighlight %}
 
 #### C++ Implementation using QuantLib
 
+{% highlight C++ %}
         Date dated = Date(16,September,2004);
         Date issue = dated;
         Date maturity = Date(15,September,2012);
@@ -60,17 +68,18 @@ Callable bonds have similarities with fixed rate bonds with an extra parameter, 
         Frequency frequency = Quarterly;
         Real redemption = 100.0;
         Real faceAmount = 100.0;
+{% endhighlight %}
 
 We then initialize the callable bond with the CallableFixedRateBond class within QuantLib, which accepts inputs same as a fixed rate bond with additional call or put schedule.
 
-
+{% highlight Python %}
         bond = CallableFixedRateBond(settlement_days, face_amount, schedule, [coupon], accrual_daycount, Following, face_amount, issue_date, callability_schedule)
-
+{% endhighlight %}
 
 
 #### C++ Implementation for a call schedule using QuantLib
 
-
+{% highlight C++ %}
        CallabilitySchedule callSchedule;
         Real callPrice = 100.;
         Size numberOfCallDates = 24;
@@ -87,11 +96,11 @@ We then initialize the callable bond with the CallableFixedRateBond class within
                                     callDate ));
             callDate = nullCalendar.advance(callDate, 3, Months);
         }
-
+{% endhighlight %}
 
 Now, we need an interest rate model for the callable bond because we need to take in two additional parameters; \mu as a mean reversion (3%) and volatility \sigma (12%). 
 
-        
+{% highlight Python %}        
         def value_bond(a, s, grid_points, bond): 
             model = HullWhite(ts_handle, a, s)
             engine = TreeCallableFixedRateBondEngine(model, grid_points) 
@@ -101,6 +110,7 @@ Now, we need an interest rate model for the callable bond because we need to tak
         value_bond(0.03, 0.12, 40, bond) 
         print("Bond price: ")
         bond.cleanPrice()
+{% endhighlight %}
 
 ![](https://user-images.githubusercontent.com/75659218/213588206-11fb5739-b695-469e-8036-7f2c21f29c9e.png)
 
