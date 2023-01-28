@@ -15,20 +15,22 @@ This repository aims at illustrating the convenience of backtesting and active p
 
 #### Example (1): Liquid Value Stocks
 
-        from AlgorithmImports import *
-        from Selection.FundamentalUniverseSelectionModel import FundamentalUniverseSelectionModel
-        class LiquidValueStocks(QCAlgorithm):
+{% highlight Python %}
+from AlgorithmImports import *
+from Selection.FundamentalUniverseSelectionModel import FundamentalUniverseSelectionModel
+   class LiquidValueStocks(QCAlgorithm):
 
-            def Initialize(self):
-              self.SetStartDate(2016, 10, 1)
-              self.SetEndDate(2017, 10, 1)
-              self.SetCash(100000)
-              self.UniverseSettings.Resolution = Resolution.Hour
-              self.AddUniverseSelection(LiquidValueUniverseSelectionModel())
-              self.AddAlpha(NullAlphaModel())
-              self.SetPortfolioConstruction(EqualWeightingPortfolioConstructionModel())
-              self.SetExecution(ImmediateExecutionModel())
-            
+   def Initialize(self):
+      self.SetStartDate(2016, 10, 1)
+      self.SetEndDate(2017, 10, 1)
+      self.SetCash(100000)
+      self.UniverseSettings.Resolution = Resolution.Hour
+      self.AddUniverseSelection(LiquidValueUniverseSelectionModel())
+      self.AddAlpha(NullAlphaModel())
+      self.SetPortfolioConstruction(EqualWeightingPortfolioConstructionModel())
+      self.SetExecution(ImmediateExecutionModel())
+{% end highlight %}
+
 Here is an example of the program class where we initialize the start date, end date, and any dat structures that will aid in the backtest such as self.UniverSettings.resolution = Resolution.Hour, which will parse the data in an hourly fashion to correct the algorithm if need be (more data points are required for hourly than daily). 
 
         class LiquidValueUniverseSelectionModel(FundamentalUniverseSelectionModel):
