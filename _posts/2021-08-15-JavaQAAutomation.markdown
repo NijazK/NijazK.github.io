@@ -73,6 +73,7 @@ The contact object class achieved 100% test coverage, the contact service had a 
 For example, this is where Java design patterns shined as I was able to manufacture new tests for helper methods using the Abstract Factory pattern, along with getters and setters to handle the bulk of exceptions. 
 
 
+{% highlight Java %}
     // setter example
     public void setFirstName (String firstName) {
 	      checkIfGreaterThanTenOrNull(firstName);
@@ -84,11 +85,12 @@ For example, this is where Java design patterns shined as I was able to manufact
 	      checkifPhoneTenAndNotNull(phoneNumber);
 	      this.phoneNumber = phoneNumber;
     }
-  
+{% endhighlight %}
   
 ### Results
 
 
+{% highlight Java %}
     ContactTest
 	    testAddress()
 	    lastNameUpdateable()
@@ -123,7 +125,7 @@ For example, this is where Java design patterns shined as I was able to manufact
 	    testDescriptionNull()
 	    testSetTaskName()
 	    testSetTaskDescription()
-      
+{% endhighlight %}    
  
 ### Summary
 
