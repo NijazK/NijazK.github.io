@@ -45,6 +45,7 @@ Where we price the call option:
 #### Using Python for Black-Scholes
 # Black-Scholes Model for European call option
 
+{% highlight Python %}
     def euro_call(spot_price, strike_price, maturity_date, current_date, risk_free_rate, volatility):
 
      d1 = (np.log(spot_price/strike_price) + (risk_free_rate + 0.5 * volatility **2) * maturity_date)/(volatility * np.sqrt(maturity_date - current_date))
@@ -52,6 +53,8 @@ Where we price the call option:
      call = (spot_price * stats.norm.cdf(d1)- strike_price * np.exp(-risk_free_rate * (maturity_date -current_date)) * stats.norm.cdf(d2))
 
      return call
+{% endhighlight %}     
+     
 As we see from the code above, we successfully modeled a black-scholes european cal option by calculating the d1 and d2 functions with the original six variables.
 
 #### Using Geometric Brownian Motion:
@@ -61,11 +64,12 @@ Underlying stock prices can be framed as a GBM process that follows a random wal
 
 <img width="430" alt="" src="https://user-images.githubusercontent.com/75659218/213042725-8d7d8d84-58bb-42ba-bbd0-58053410fa93.png">
 
-
+{% highlight Python %}
     # Monte Carlo simulation
 
      spot_price = spot_price * np.exp((risk_free_rate - 0.5 * volatility **2) * maturity_date + volatility * np.sqrt(maturity_date) * Z)
      Call_option = np.exp(-risk_free_rate * maturity_date)* np.mean(np.maximum(spot_price - strike_price, 0))
+{% endhighlight %}
 
 In the Monte Carlo simulation, we will use call_option to model the first equation of the Geometric brownian motion and BSM as the second equation. The final yields were Black-Scholes: 8.021 and Monte Carlo: 8.19
 
@@ -76,6 +80,8 @@ Assume we are purchasing a European call option for TSLA with a strike price of 
 We see that the theoretical price of the option is 0.24 using the AnalyticEuropeanEngine().
 
 #### C++ Implementation.
+
+{% highlight C++ %}
     #include <ql/qldefines.hpp>
     #if !defined(BOOST_ALL_NO_LIB) && defined(BOOST_MSVC)
     #  include <ql/auto_link.hpp>
@@ -146,7 +152,7 @@ We see that the theoretical price of the option is 0.24 using the AnalyticEurope
                           << std::setw(widths[2]) << std::left << "N/A"
                           << std::setw(widths[3]) << std::left << "N/A"
                           << std::endl;
-
+{% endhighlight %}                    
 
 #### Example 2: Binomial Tree Model for TSLA European Option.
 Let's use the information from above to construct a binomial tree.
@@ -157,6 +163,7 @@ We still use the information from above, however, we do use a function to create
 
 #### C++ Implementation:
 
+{% highlight C++ %}
         // Binomial method: Additive equiprobabilities
         method = "Additive equiprobabilities";
         europeanOption.setPricingEngine(ext::shared_ptr<PricingEngine>(
@@ -171,7 +178,7 @@ We still use the information from above, however, we do use a function to create
                   << std::setw(widths[2]) << std::left << bermudanOption.NPV()
                   << std::setw(widths[3]) << std::left << americanOption.NPV()
                   << std::endl;
-
+{% endhighlight %}
 
 
 
