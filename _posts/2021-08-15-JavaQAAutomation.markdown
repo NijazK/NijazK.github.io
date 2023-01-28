@@ -74,16 +74,16 @@ For example, this is where Java design patterns shined as I was able to manufact
 
 
 {% highlight Java %}
-    // setter example
-    public void setFirstName (String firstName) {
-	      checkIfGreaterThanTenOrNull(firstName);
-	      this.firstName = firstName;
+// setter example
+public void setFirstName (String firstName) {
+	checkIfGreaterThanTenOrNull(firstName);
+	this.firstName = firstName;
      }
 
-    //setter example #2
-    public void setPhoneNumber (String phoneNumber) {
-	      checkifPhoneTenAndNotNull(phoneNumber);
-	      this.phoneNumber = phoneNumber;
+//setter example #2
+public void setPhoneNumber (String phoneNumber) {
+	checkifPhoneTenAndNotNull(phoneNumber);
+	this.phoneNumber = phoneNumber;
     }
 {% endhighlight %}
   
@@ -91,40 +91,40 @@ For example, this is where Java design patterns shined as I was able to manufact
 
 
 {% highlight Java %}
-    ContactTest
-	    testAddress()
-	    lastNameUpdateable()
-	    idGettable()
-	    addressUpdateable()
-	    testLastNull()
-	    testPhoneNull()
-	    addressExceedsThirty()
-	    firstNameUpdateable()
-	    firstNameExceedsTen()
-	    phoneNumberNotTen()
-	    idExceedsTen()
-	    phoneNumberlessThanTen()
-	    testFirstNameNull()
-	    lastNameExceedsTen()
-	    testIdNull()
-	    phoneNumberUpdateable()
+ContactTes:
+testAddress()
+lastNameUpdateable()
+idGettable()
+addressUpdateable()
+testLastNull()
+testPhoneNull()
+addressExceedsThirty()
+firstNameUpdateable()
+firstNameExceedsTen()
+phoneNumberNotTen()
+idExceedsTen()
+phoneNumberlessThanTen()
+testFirstNameNull()
+lastNameExceedsTen()
+testIdNull()
+phoneNumberUpdateable()
 	
-    TaskService:
-	    testAddTask()
-	    testUpdateTask()
-	    testUniqueId()
-	    testDeleteTask()
-	    testReadTaskNotFound()
+TaskService:
+testAddTask()
+testUpdateTask()
+testUniqueId()
+testDeleteTask()
+testReadTaskNotFound()
 
-    TaskTest: 
-	    testNameIsNull()
-	    testNameExceeds()
-	    testIdExceeds()
-	    testTask()
-	    testDescriptionExceeds()
-	    testDescriptionNull()
-	    testSetTaskName()
-	    testSetTaskDescription()
+TaskTest: 
+testNameIsNull()
+testNameExceeds()
+testIdExceeds()
+testTask()
+testDescriptionExceeds()
+testDescriptionNull()
+testSetTaskName()
+testSetTaskDescription()
 {% endhighlight %}    
  
 ### Summary
