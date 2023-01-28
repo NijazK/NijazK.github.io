@@ -33,6 +33,7 @@ from Selection.FundamentalUniverseSelectionModel import FundamentalUniverseSelec
 
 Here is an example of the program class where we initialize the start date, end date, and any dat structures that will aid in the backtest such as self.UniverSettings.resolution = Resolution.Hour, which will parse the data in an hourly fashion to correct the algorithm if need be (more data points are required for hourly than daily). 
 
+        {% highlight Python %}
         class LiquidValueUniverseSelectionModel(FundamentalUniverseSelectionModel):
     
             def __init__(self):
@@ -53,7 +54,7 @@ Here is an example of the program class where we initialize the start date, end 
         
               #4. Return the top 100 Symbols by Dollar Volume 
               return [x.Symbol for x in sortedByDollarVolume[:100]]
-
+         {% endhighlight %}
 
 This portion of the algorithm will execute the desired parameters of the quantitative trader. The convenience within this framework is that quantitative traders can set boundaries as to where they buy (stocks, sector, asset classes), whom they buy from (brokers), and what they buy (parameters such as PE Ratio, Earnings volume, and Trading volume). In the above example, we pass a function SelectCoarse(self, algorithm, coarse) with parameters of self, algorithm, and coarse universe data to set parameters on asset classes that are stocks, and that have relatively low dollar volume, which will correlate with a lower PE Ratio. 
 
@@ -61,6 +62,7 @@ This portion of the algorithm will execute the desired parameters of the quantit
 
 We will start the algorithm by allocating symbols IVV (iShares Core S&P 500) and IEFA (iShares core MSCI EAFE) with the allocated amount. Then, the algorithm will create an empty storage array for changed symbols that get selected for the coarse selection universe. However, One can add additional filtering options for the algorithm if you want additional parameters. For this example, I only allowed a pointer [c] to add IEFA, IJR, IJH, and IEMG with no additional parameters. If the security should get delisted, it will get into the RemovedSecurities array and the allocated capital shall get a 70-30 split between the two ETFs with the most capital (IVV, IEFA).
 
+        {% highlight Python %}
         from AlgorithmImports import *
 
         ### <summary>
@@ -126,9 +128,11 @@ We will start the algorithm by allocating symbols IVV (iShares Core S&P 500) and
                                 self.Log("{0}: Submitted: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
                         if orderEvent.Status == OrderStatus.Filled:
                                 self.Log("{0}: Filled: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
+        {% endhighlight %}
                                 
 #### Example 3: Quarterly Portfolio Rebalance
 
+        {% highlight Python %}
         class AddRemoveSecurityRegressionAlgorithm(QCAlgorithm):
 
                 def Initialize(self):
@@ -144,9 +148,11 @@ We will start the algorithm by allocating symbols IVV (iShares Core S&P 500) and
                         self.AddEquity("HSY")
 
                         self._lastAction = None
+         {% endhighlight %}
 
 We set the algorithm by instantiating the start and end dates, and the amount of capital the algorithm will work with. Also, the equities that will be added are as listed: "MSFT", "NVO", "ABNB", "HSY".
 
+{% highlight Python %}
     def OnData(self, data):
         '''OnData event is the primary entry point for your algorithm. Each new data point will be pumped in here.'''
         if self._lastAction is not None and self._lastAction.date() == self.Time.date():
@@ -192,6 +198,8 @@ We set the algorithm by instantiating the start and end dates, and the amount of
             self.Debug("{0}: Submitted: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
         if orderEvent.Status == OrderStatus.Filled:
             self.Debug("{0}: Filled: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
+{% endhighlight %}
+
 
 This section deals with the time constarint of the algorithm. There are 5 "if" statements that make sure the algorithm goes through a quarter with certain assets then removes the securities at the end of the time constraint. The main framework for this algorithm is to have a trading schedule set to quarterly performing stocks. The stocks should consist of a mix of low volatile and high volatile stocks to properly hedge the trade. In doing so, the trader should consider the amount of additional capital invested as well to avoid higher losses.
 
