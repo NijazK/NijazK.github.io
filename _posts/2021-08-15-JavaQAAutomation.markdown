@@ -91,27 +91,27 @@ public void setPhoneNumber (String phoneNumber) {
 
 
 {% highlight Java %}
-	ContactTest:
-		testAddress()
-		lastNameUpdateable()
-		idGettable()
-		addressUpdateable()
-		testLastNull()
-		testPhoneNull()
-		addressExceedsThirty()
-		firstNameUpdateable()
-		firstNameExceedsTen()
-		phoneNumberNotTen()
-		idExceedsTen()
-		phoneNumberlessThanTen()
-		testFirstNameNull()
-		lastNameExceedsTen()
-		testIdNull()
-		phoneNumberUpdateable()
+ContactTest:
+	testAddress()
+	lastNameUpdateable()
+	idGettable()
+	addressUpdateable()
+	testLastNull()
+	testPhoneNull()
+	addressExceedsThirty()
+	firstNameUpdateable()
+	firstNameExceedsTen()
+	phoneNumberNotTen()
+	idExceedsTen()
+	phoneNumberlessThanTen()
+	testFirstNameNull()
+	lastNameExceedsTen()
+	testIdNull()
+	phoneNumberUpdateable()
 {% endhighlight %}	
 
 {% highlight Java %}
-	TaskService:
+TaskService:
 	testAddTask()
 	testUpdateTask()
 	testUniqueId()
@@ -120,15 +120,15 @@ public void setPhoneNumber (String phoneNumber) {
 {% endhighlight %}
 
 {% highlight Java %}
-	TaskTest: 
-		testNameIsNull()
-		testNameExceeds()
-		testIdExceeds()
-		testTask()
-		testDescriptionExceeds()
-		testDescriptionNull()
-		testSetTaskName()
-		testSetTaskDescription()
+TaskTest: 
+	testNameIsNull()
+	testNameExceeds()
+	testIdExceeds()
+	testTask()
+	testDescriptionExceeds()
+	testDescriptionNull()
+	testSetTaskName()
+	testSetTaskDescription()
 {% endhighlight %}    
  
 ### Summary
