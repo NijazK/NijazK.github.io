@@ -29,7 +29,7 @@ from Selection.FundamentalUniverseSelectionModel import FundamentalUniverseSelec
       self.AddAlpha(NullAlphaModel())
       self.SetPortfolioConstruction(EqualWeightingPortfolioConstructionModel())
       self.SetExecution(ImmediateExecutionModel())
-{% end highlight %}
+{% endhighlight %}
 
 Here is an example of the program class where we initialize the start date, end date, and any dat structures that will aid in the backtest such as self.UniverSettings.resolution = Resolution.Hour, which will parse the data in an hourly fashion to correct the algorithm if need be (more data points are required for hourly than daily). 
 
