@@ -91,40 +91,44 @@ public void setPhoneNumber (String phoneNumber) {
 
 
 {% highlight Java %}
-ContactTes:
-testAddress()
-lastNameUpdateable()
-idGettable()
-addressUpdateable()
-testLastNull()
-testPhoneNull()
-addressExceedsThirty()
-firstNameUpdateable()
-firstNameExceedsTen()
-phoneNumberNotTen()
-idExceedsTen()
-phoneNumberlessThanTen()
-testFirstNameNull()
-lastNameExceedsTen()
-testIdNull()
-phoneNumberUpdateable()
-	
-TaskService:
-testAddTask()
-testUpdateTask()
-testUniqueId()
-testDeleteTask()
-testReadTaskNotFound()
+	ContactTest:
+		testAddress()
+		lastNameUpdateable()
+		idGettable()
+		addressUpdateable()
+		testLastNull()
+		testPhoneNull()
+		addressExceedsThirty()
+		firstNameUpdateable()
+		firstNameExceedsTen()
+		phoneNumberNotTen()
+		idExceedsTen()
+		phoneNumberlessThanTen()
+		testFirstNameNull()
+		lastNameExceedsTen()
+		testIdNull()
+		phoneNumberUpdateable()
+{% endhighlight %}	
 
-TaskTest: 
-testNameIsNull()
-testNameExceeds()
-testIdExceeds()
-testTask()
-testDescriptionExceeds()
-testDescriptionNull()
-testSetTaskName()
-testSetTaskDescription()
+{% highlight Java %}
+	TaskService:
+	testAddTask()
+	testUpdateTask()
+	testUniqueId()
+	testDeleteTask()
+	testReadTaskNotFound()
+{% endhighlight %}
+
+{% highlight Java %}
+	TaskTest: 
+		testNameIsNull()
+		testNameExceeds()
+		testIdExceeds()
+		testTask()
+		testDescriptionExceeds()
+		testDescriptionNull()
+		testSetTaskName()
+		testSetTaskDescription()
 {% endhighlight %}    
  
 ### Summary
