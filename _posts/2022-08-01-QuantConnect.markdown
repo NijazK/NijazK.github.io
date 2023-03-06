@@ -1,62 +1,15 @@
 ---
 layout: post
-title:  "Quantitative Trading Algorithms (Python)"
+title:  "Regressional ETFs Trading"
 date:   2022-08-15 14:34:25
 categories: jekyll update
 tags: 
 image: /assets/article_images/2022-08-01-QuantConnect/QuantConnect.jpg
 image2: /assets/article_images/2022-08-01-QuantConnect/QuantConnect-mobile.jpg
 ---
-## QuantConnect Algorithm Research
 
-QuantConnect is an open-source financial technology platform that is currently paving the way for the future of trading. The platform is comprised of three main parts: Cloud Research, Backtesting, Parameter Optimization, and Live Trading. 
 
-This repository aims at illustrating the convenience of backtesting and active portfolio management using the Python engine. More specifically, it will ustilize the backtesting and cloud research platforms that are supported by QuantConnect. Popular trading strategies include: Buy and hold, Pairs trading, ETF weighing, mean-reversion, and momentum-based strategies. I should also include that the repository does contain course solutions for the equities, forex, and options course. 
 
-#### Example (1): Liquid Value Stocks
-
-{% highlight Python %}
-from AlgorithmImports import *
-from Selection.FundamentalUniverseSelectionModel import FundamentalUniverseSelectionModel
-   class LiquidValueStocks(QCAlgorithm):
-
-   def Initialize(self):
-      self.SetStartDate(2016, 10, 1)
-      self.SetEndDate(2017, 10, 1)
-      self.SetCash(100000)
-      self.UniverseSettings.Resolution = Resolution.Hour
-      self.AddUniverseSelection(LiquidValueUniverseSelectionModel())
-      self.AddAlpha(NullAlphaModel())
-      self.SetPortfolioConstruction(EqualWeightingPortfolioConstructionModel())
-      self.SetExecution(ImmediateExecutionModel())
-{% endhighlight %}
-
-Here is an example of the program class where we initialize the start date, end date, and any dat structures that will aid in the backtest such as self.UniverSettings.resolution = Resolution.Hour, which will parse the data in an hourly fashion to correct the algorithm if need be (more data points are required for hourly than daily). 
-
-        {% highlight Python %}
-        class LiquidValueUniverseSelectionModel(FundamentalUniverseSelectionModel):
-    
-            def __init__(self):
-              super().__init__(True, None)
-              self.lastMonth = -1 
-    
-            def SelectCoarse(self, algorithm, coarse):
-        
-              #1. If it isn't time to update data, return the previous symbols 
-              if self.lastMonth == algorithm.Time.month:
-                return Universe.Unchanged
-        
-              #2. Update self.lastMonth with current month to make sure only process once per month
-              self.lastMonth = algorithm.Time.month
-        
-              #3. Sort symbols by dollar volume and if they have fundamental data, in descending order
-              sortedByDollarVolume = sorted([x for x in coarse if x.HasFundamentalData], key=lambda x: x.DollarVolume, reverse=True)
-        
-              #4. Return the top 100 Symbols by Dollar Volume 
-              return [x.Symbol for x in sortedByDollarVolume[:100]]
-         {% endhighlight %}
-
-This portion of the algorithm will execute the desired parameters of the quantitative trader. The convenience within this framework is that quantitative traders can set boundaries as to where they buy (stocks, sector, asset classes), whom they buy from (brokers), and what they buy (parameters such as PE Ratio, Earnings volume, and Trading volume). In the above example, we pass a function SelectCoarse(self, algorithm, coarse) with parameters of self, algorithm, and coarse universe data to set parameters on asset classes that are stocks, and that have relatively low dollar volume, which will correlate with a lower PE Ratio. 
 
 #### Example (2): BlackRock ETF Regressional iShares Model
 
@@ -130,77 +83,4 @@ We will start the algorithm by allocating symbols IVV (iShares Core S&P 500) and
                                 self.Log("{0}: Filled: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
         {% endhighlight %}
                                 
-#### Example 3: Quarterly Portfolio Rebalance
 
-        {% highlight Python %}
-        class AddRemoveSecurityRegressionAlgorithm(QCAlgorithm):
-
-                def Initialize(self):
-                        '''Initialise the data and resolution required, as well as the cash and start-end dates for your algorithm. All algorithms must initialized.'''
-
-                        self.SetStartDate(2021,11,1)   #Set Start Date
-                        self.SetEndDate(2022,1,1)    #Set End Date
-                        self.SetCash(100000)           #Set Strategy Cash
-                        # Find more symbols here: http://quantconnect.com/data
-                        self.AddEquity("NVO")
-                        self.AddEquity("MSFT")
-                        self.AddEquity("ABNB")
-                        self.AddEquity("HSY")
-
-                        self._lastAction = None
-         {% endhighlight %}
-
-We set the algorithm by instantiating the start and end dates, and the amount of capital the algorithm will work with. Also, the equities that will be added are as listed: "MSFT", "NVO", "ABNB", "HSY".
-
-{% highlight Python %}
-    def OnData(self, data):
-        '''OnData event is the primary entry point for your algorithm. Each new data point will be pumped in here.'''
-        if self._lastAction is not None and self._lastAction.date() == self.Time.date():
-            return
-
-        if not self.Portfolio.Invested:
-            self.SetHoldings("NVO", .02)
-            self.SetHoldings("MSFT", .01)
-            self.SetHoldings("ABNB", .05)
-            self.SetHoldings("HSY", .09)
-            self._lastAction = self.Time
-
-        if self.Time.weekday() == 1:
-            self.AddEquity("NVO")
-            self.AddEquity("MSFT")
-            self.AddEquity("ABNB")
-            self.AddEquity("HSY")
-            self._lastAction = self.Time
-
-        if self.Time.weekday() == 2:
-            self.AddEquity("NVO")
-            self.AddEquity("MSFT")
-            self.AddEquity("ABNB")
-            self.AddEquity("HSY")
-            self._lastAction = self.Time
-
-        if self.Time.weekday() == 3:
-            self.AddEquity("NVO")
-            self.AddEquity("MSFT")
-            self.AddEquity("ABNB")
-            self.AddEquity("HSY")
-            self._lastAction = self.Time
-        
-        if self.Time.weekday() == 12:
-            self.RemoveSecurity("NVO")
-            self.RemoveSecurity("MSFT")
-            self.RemoveSecurity("ABNB")
-            self.RemoveSecurity("HSY")
-            self._lastAction = self.Time
-
-    def OnOrderEvent(self, orderEvent):
-        if orderEvent.Status == OrderStatus.Submitted:
-            self.Debug("{0}: Submitted: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
-        if orderEvent.Status == OrderStatus.Filled:
-            self.Debug("{0}: Filled: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
-{% endhighlight %}
-
-
-This section deals with the time constarint of the algorithm. There are 5 "if" statements that make sure the algorithm goes through a quarter with certain assets then removes the securities at the end of the time constraint. The main framework for this algorithm is to have a trading schedule set to quarterly performing stocks. The stocks should consist of a mix of low volatile and high volatile stocks to properly hedge the trade. In doing so, the trader should consider the amount of additional capital invested as well to avoid higher losses.
-
-As we can see, there are a lot of different varieties of portfolios that can be created by using QuantConnect. If you should use one of these tests, you can trade live locally to maximize the CPU output (more parameters will use more data points which might restrict trade executions).
