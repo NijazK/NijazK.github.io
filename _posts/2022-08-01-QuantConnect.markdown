@@ -11,9 +11,10 @@ image2: /assets/article_images/2022-08-01-QuantConnect/QuantConnect-mobile.jpg
 
 
 
-#### Example (2): BlackRock ETF Regressional iShares Model
-
+## Abstract
 We will start the algorithm by allocating symbols IVV (iShares Core S&P 500) and IEFA (iShares core MSCI EAFE) with the allocated amount. Then, the algorithm will create an empty storage array for changed symbols that get selected for the coarse selection universe. However, One can add additional filtering options for the algorithm if you want additional parameters. For this example, I only allowed a pointer [c] to add IEFA, IJR, IJH, and IEMG with no additional parameters. If the security should get delisted, it will get into the RemovedSecurities array and the allocated capital shall get a 70-30 split between the two ETFs with the most capital (IVV, IEFA).
+
+## Methodology 
 
         {% highlight Python %}
         from AlgorithmImports import *
