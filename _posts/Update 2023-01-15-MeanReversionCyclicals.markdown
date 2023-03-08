@@ -63,7 +63,7 @@ Assume a portfolio of $1 billion USD (1,000,000,000) and we want to optimize 1%,
 ## 6-Month Backtest Results
 For this backtest, we use 10x more liquidity than the above example to compensate transaction fees as well as use volume to our advantage. 
 ![](https://user-images.githubusercontent.com/75659218/223874500-2008e477-b36f-477b-8bc8-3cf35775b30b.png)
-We see that an extended period for the mean reversion trading strategy is more suitable than a weekly or singular month because we the algorithm can emit better results the more timesteps it gets fed. We can also see the Sharpe ratio is much higher in a 6-month backtest than both 1-month and 2-week combined.
+We see that an extended period for the mean reversion trading strategy is more suitable than a weekly or singular month because we the algorithm can emit better results the more timesteps it gets fed. 
 
 ## 1-Year Backtest result
 We'll assume the $1 billion USD portfolio example from before and only allocate 10% of the portfolio to this strategy ($100,000,000). 
