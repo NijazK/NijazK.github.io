@@ -7,7 +7,7 @@ tags:
 image: /assets/article_images/2023-18-01-FixedRateModel/FixedRateModel.jpg
 image2: /assets/article_images/2023-18-01-FixedRateModel/FixedRateModel-mobile.jpg
 ---
-Using QuantConnect to model a Mean Reversion trading strategy for cyclicla stocks.
+Using QuantConnect to model a Mean Reversion trading strategy for cyclical stocks.
 
 ## Cyclical Stocks.
 Cyclical stocks are stocks that are affected by macroeconomic changes. For example, a car manufacturer's stock should be doing better in a good economy because many consumers might be able to afford newer cars during a good economic cycle. On the other hand, car manufacturers will not be doing so well when the economy is in a recession because buying new cars isn't readily available to many consumers during a recession. This results in higher volatility as well as market inefficiencies. 
@@ -90,7 +90,7 @@ As we see, the sharpe ratio is just over 1 (still better than the 1-month exampl
               self.Debug("{0}: Filled: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
 
 ## Conclusions
-Mean reversion can be a great strategy when the correct parameters are being exercised. For this simple exercise, I used magnitude as a parameter to track the standard deviation of the p/e ratio and when it was lower than 1 compared to that stock historically. Therefore, if the standard deviation gets too high (greater than 2) then the program will execute the sale. Further testing should be done on the individual parameters for validation. On a further note, an additional manual selection universe was added to ensure the algorithm buys and holds two specific assets (GOOGL and GILD for example). This is done as a risk management tool so the program will not overbuy assets that do not pass the emitting. 
+For this simple exercise, I used magnitude as a parameter to track the standard deviation of the p/e ratio and when it was lower than 1 compared to that stock historically. Therefore, if the standard deviation gets too high (greater than 2) then the program will execute the sale. Further testing should be done on the individual parameters for validation. On a further note, an additional manual selection universe was added to ensure the algorithm buys and holds two specific assets (GOOGL and GILD for example). This is done as a risk management tool so the program will not overbuy assets that do not pass the emitting. 
 
 
 
