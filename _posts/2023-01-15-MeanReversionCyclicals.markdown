@@ -41,7 +41,7 @@ We see that an extended period for the mean reversion trading strategy is more s
 ## 1-Year Backtest result
 We'll assume the $1 billion USD portfolio example from before and only allocate 10% of the portfolio to this strategy ($100,000,000). 
 ![](https://user-images.githubusercontent.com/75659218/223875940-5b6bf96a-8adf-4d3d-b1d9-fd3442043179.png)
-As we see, the sharpe ratio is just over 1 (still better than the 1-month and bi-weekly example!) with a compounding return of 34.37% and 65% win rate across 12 months.
+As we see, the sharpe ratio is just over 1 (still better than the 1-month example!) with a compounding return of 34.37% and 65% win rate across 12 months.
 
 ## Conclusions
 Mean reversion can be a great strategy when the correct parameters are being exercised. For this scimple exercise, I used magnitude as a parameter to track the standard deviaton of the p/e ratio and when it was lower than 1 compared to that stock historically. Therefore, if the standard devaition gets too high (greater than 2) then the program will execute the sell.
