@@ -45,7 +45,49 @@ As we see, the sharpe ratio is just over 1 (still better than the 1-month exampl
 
 ## Algorithm
 
+    from AlgorithmImports import *
+    from Portfolio.MeanReversionPortfolioConstructionModel import *
 
+    class MeanReversionPortfolioAlgorithm(QCAlgorithm):
+      '''Example algorithm of using MeanReversionPortfolioConstructionModel'''
+
+      def Initialize(self):
+          # Set starting date, cash and ending date of the backtest
+          self.SetStartDate(2020, 1, 1)
+          self.SetEndDate(2021, 1, 1)
+          self.SetCash(100000000)
+
+          self.SetSecurityInitializer(lambda security: security.SetMarketPrice(self.GetLastKnownPrice(security)))
+
+          # Subscribe to data of the selected stocks
+          self.techSymbols = [self.AddEquity(ticker, Resolution.Daily).Symbol for ticker in ["GOOGL", "TSM", "ZM", "AMD"] ]
+          self.healthSymbols = [self.AddEquity(ticker, Resolution.Daily).Symbol for ticker in ["NVO", "GILD", "UTHR", "VRTX"] ]
+          self.consumerSymbols = [self.AddEquity(ticker, Resolution.Daily).Symbol for ticker in ["HSY", "KR", "TSLA", "KDP"] ]
+
+
+          self.AddAlpha(ConstantAlphaModel(InsightType.Price, InsightDirection.Up, timedelta(1)))
+          self.SetPortfolioConstruction(MeanReversionPortfolioConstructionModel())
+
+          # Make sure to emit the two assets selected
+          self.SetUniverseSelection(ManualUniverseSelectionModel(
+              [Symbol.Create(x, SecurityType.Equity, Market.USA) for x in ["GOOGL", "GILD"]]))
+
+
+      def OnData(self, slice):
+
+          if self.Portfolio.Invested: return
+
+          self.EmitInsights(
+              [
+                  Insight.Price("GOOGL", timedelta(1), InsightDirection.Up),
+                  Insight.Price("GILD", timedelta(1), InsightDirection.Down)
+              ])
+
+      def OnOrderEvent(self, orderEvent):
+          if orderEvent.Status == OrderStatus.Submitted:
+              self.Debug("{0}: Submitted: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
+          if orderEvent.Status == OrderStatus.Filled:
+              self.Debug("{0}: Filled: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
 
 ## Conclusions
 Mean reversion can be a great strategy when the correct parameters are being exercised. For this simple exercise, I used magnitude as a parameter to track the standard deviation of the p/e ratio and when it was lower than 1 compared to that stock historically. Therefore, if the standard deviation gets too high (greater than 2) then the program will execute the sale.
