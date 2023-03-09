@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Mean Reversion Cyclicals Stocks"
+title:  "Mean Reversion Cyclicals"
 date:   2023-01-18 14:34:25
 categories: jekyll update
 tags: 
@@ -90,7 +90,7 @@ As we see, the sharpe ratio is just over 1 (still better than the 1-month exampl
               self.Debug("{0}: Filled: {1}".format(self.Time, self.Transactions.GetOrderById(orderEvent.OrderId)))
 
 ## Conclusions
-For this simple exercise, I used magnitude as a parameter to track the standard deviation of the p/e ratio and when it was lower than 1 compared to that stock historically. Therefore, if the standard deviation gets too high (greater than 2) then the program will execute the sale. Further testing should be done on the individual parameters for validation. On a further note, an additional manual selection universe was added to ensure the algorithm buys and holds two specific assets (GOOGL and GILD for example). This is done as a risk management tool so the program will not overbuy assets that do not pass the emitting. 
+For this simple exercise, magnitude was the primary parameter to track the standard deviation of the p/e ratio and when it was lower than 1 compared to that stock historically. Therefore, if the standard deviation gets too high (greater than 2) then the program will execute the sale. Further testing should be done on the individual parameters for validation. On a further note, an additional manual selection universe was added to ensure the algorithm buys and holds two specific assets (GOOGL and GILD for example). This is done as a risk management tool so the program will not overbuy assets that do not pass the emitting. 
 
 
 
