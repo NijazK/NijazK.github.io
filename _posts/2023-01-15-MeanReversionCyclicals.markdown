@@ -24,33 +24,6 @@ The basis for this strategy is to combine the certain cyclical assets and utiliz
 Using the equity curve for these specific assets in a 1 year 2020 - 2021 has a magnitude of < 1. However, the returns for this portfolio should be measured in smaller quantities, but for this example and the sakle of simplicity, we will measure the trading startegy as a constant 12 month long position. The reason for the stagnation is due to the lack of movement (< 1 ) standard deviation within the p/e ratio and thus the asset is held on for extended period.
 
 ## Backtest Results 
-Through several iterations of backtests, I have found that typically a 1-month to couple week timeframe suits best for this strategy. 
-
-The algorithm framework below is the mean reversion class used in QuantConnect. The three cyclical asset classes are: Technology, Healthcare, and Consumer.
-
-    from AlgorithmImports import *
-    from Portfolio.MeanReversionPortfolioConstructionModel import *
-
-    class MeanReversionPortfolioAlgorithm(QCAlgorithm):
-      '''Example algorithm of using MeanReversionPortfolioConstructionModel'''
-
-      def Initialize(self):
-          # Set starting date, cash and ending date of the backtest
-          self.SetStartDate(2020, 1, 1)
-          self.SetEndDate(2021, 1, 1)
-          self.SetCash(100000000)
-
-          self.SetSecurityInitializer(lambda security: security.SetMarketPrice(self.GetLastKnownPrice(security)))
-        
-          # Subscribe to data of the selected stocks
-          self.techSymbols = [self.AddEquity(ticker, Resolution.Daily).Symbol for ticker in ["GOOGL", "TSM", "ZM", "AMD"] ]
-          self.healthSymbols = [self.AddEquity(ticker, Resolution.Daily).Symbol for ticker in ["NVO", "GILD", "UTHR", "VRTX"] ]
-          self.consumerSymbols = [self.AddEquity(ticker, Resolution.Daily).Symbol for ticker in ["HSY", "KR", "TSLA", "KDP"] ]
-        
-
-          self.AddAlpha(ConstantAlphaModel(InsightType.Price, InsightDirection.Up, timedelta(1)))
-          self.SetPortfolioConstruction(MeanReversionPortfolioConstructionModel())
-
 
 ## 1-Month Trading Backtest
 The results for the 1-month trading strategy has a loss rate 24% and win rate of 76%. This is inlfated due to the notion that we pre-selected certain assets (knowing the cyclical > 1 standard deviation) and thus know that the probability of winning trades tends to be higher. 
@@ -71,9 +44,7 @@ We'll assume the $1 billion USD portfolio example from before and only allocate 
 As we see, the sharpe ratio is just over 1 (still better than the 1-month and bi-weekly example!) with a compounding return of 34.37% and 65% win rate across 12 months.
 
 ## Conclusions
-Mean reversion can be a great strategy when the correct parameters are being exercised. For this scimple exercise, I used parameters such as magnitude of pe/e ratio, 
-
-
+Mean reversion can be a great strategy when the correct parameters are being exercised. For this scimple exercise, I used magnitude as a parameter to track the standard deviaton of the p/e ratio and when it was lower than 1 compared to that stock historically. Therefore, if the standard devaition gets too high (greater than 2) then the program will execute the sell.
 
 
 
