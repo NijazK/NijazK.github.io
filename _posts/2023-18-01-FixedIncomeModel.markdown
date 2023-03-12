@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Modeling Options Commodities using Black 76 Formula"
+title:  "Valuing Options Commodities using Black 76 Formula"
 date:   2023-01-18 14:34:25
 categories: jekyll update
 tags: 
