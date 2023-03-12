@@ -1,126 +1,34 @@
 ---
 layout: post
-title:  "Fixed Rate Models (C++, Python)"
+title:  "Modeling Options Commodities using Black 76 Formula"
 date:   2023-01-18 14:34:25
 categories: jekyll update
 tags: 
 image: /assets/article_images/2023-18-01-FixedRateModel/FixedRateModel.jpg
 image2: /assets/article_images/2023-18-01-FixedRateModel/FixedRateModel-mobile.jpg
 ---
-Modeling fixed rate instruments using industry standard practices.
+Modeling Options commodities with Black 76 and QuantLib
 
-#### Fixed Rate Bond
-Let's assume a simple example of fixed-rate bonds. Consider a bond with a par value of $100000, that pays a 7% coupon semi-annually, issued on January 15th, 2015, and set to mature on January 15th, 2016. The bond will pay a coupon on July 15th, 2015, and January 15th, 2016. The par amount of 100000 will also be paid on January 15th, 2016. The spot rates for the bond are 0.6% semi-annually and 0.8% annually. 
-First, we construct a yield curve with given spot rates using ZeroCurve from QuantLib. After, we will build a fixed rate object and in doing so, we need a stored array of coupon payments so the FixedRateBond() can pass as parameters. 
+####  Mathematics and Assumptions
+* Use the Black-Scholes equation to price commodity futures options.
+* We will not model commodities as the same as equity options because the prices do not fluctuate as much. Therefore, the commodiities will not be in a stochastic process.
 
-FixedRateBond():
+* Futures prices are log-normally distributed.
+* All options will be exercised at maturity.
+* Volatility is not constant (depends on time to maturity)
 
-{% highlight Python %}
-    coupon_rate = .07
-    coupons = [coupon_rate]
-    settlement_days = 0
-    face_value = 100000
-    fixed_rate_bond = FixedRateBond(settlement_days, face_value, schedule, coupons, day_count)
-{% endhighlight %}
+#### Use a stochastic process to model the time, t, and Ft:
+![image.png](attachment:image.png)
 
-Let's use the QuantLib valuation engine DiscountBondEngine() to properly price the bond. The DiscountBondEngine() takes the yield curve object as an argument:
+#### Valuing a Call option
+![image-2.png](attachment:image-2.png)
 
-DiscountBondEngine():
+#### Valuing a Put option
+![image-3.png](attachment:image-3.png)
 
-{% highlight Python %}
-    bond_engine = DiscountingBondEngine(spot_curve_handle)
-    fixed_rate_bond.setPricingEngine(bond_engine)
-{% endhighlight %}
-
-Final yields:
-
-{% highlight Python %}
-    print(fixed_rate_bond)
-    99310.83761241747
-{% endhighlight %}    
-
-#### Callable Bonds
-A callable bond is a type of fixed instrument that provides the issuer of the bond with the right to redeem the bond before its maturity date. Callable bonds usually have restrictions such as bonds may not be able to be redeemed ina specified initial period of their lifespan. A simple example of a callable bond is assume we have a 10 year maturity bond where the first 5 years of maturity have not call option, but the 6th - 10th year have a reddemable call option if the interest rate decreases. This is how we find value of a callable bond Price(Callable bond) = Price(plain - Vanilla Option) - Price(call Option) where the price of the vanilla bond shares similarities with the callable bond and the price of the call option to redeem the bond before maturity.
-
-#### Modeling a Callable Bond
-Callable bonds have similarities with fixed rate bonds with an extra parameter, which is a call or put scheduler. For this example, we assume a flat yield curve of 3.5%. The call price is $1,000 and we use the container Callability. Call because it is a call option, not a put option.
-
-{% highlight Python %}
-        callability_schedule = CallabilitySchedule()
-        call_price = 1000.0
-        call_date = Date(15, September, 2016); 
-        null_calendar = NullCalendar();
-        for i in range(0,24):
-            callability_price  = ql.BondPrice(call_price, ql.BondPrice.Clean)
-            callability_schedule.append(ql.Callability(callability_price, Callability.Call, call_date))
-            call_date = null_calendar.advance(call_date, 3, Months)
-{% endhighlight %}
-
-#### C++ Implementation using QuantLib
-
-{% highlight C++ %}
-        Date dated = Date(16,September,2004);
-        Date issue = dated;
-        Date maturity = Date(15,September,2012);
-        Natural settlementDays = 3;  // Bloomberg OAS1 settle is Oct 19, 2007
-        Calendar bondCalendar = UnitedStates(UnitedStates::GovernmentBond);
-        Real coupon = .0465;
-        Frequency frequency = Quarterly;
-        Real redemption = 100.0;
-        Real faceAmount = 100.0;
-{% endhighlight %}
-
-We then initialize the callable bond with the CallableFixedRateBond class within QuantLib, which accepts inputs same as a fixed rate bond with additional call or put schedule.
-
-{% highlight Python %}
-        bond = CallableFixedRateBond(settlement_days, face_amount, schedule, [coupon], accrual_daycount, Following, face_amount, issue_date, callability_schedule)
-{% endhighlight %}
-
-
-#### C++ Implementation for a call schedule using QuantLib
-
-{% highlight C++ %}
-       CallabilitySchedule callSchedule;
-        Real callPrice = 100.;
-        Size numberOfCallDates = 24;
-        Date callDate = Date(15,September,2006);
-
-        for (Size i=0; i< numberOfCallDates; i++) {
-            Calendar nullCalendar = NullCalendar();
-
-            Bond::Price myPrice(callPrice, Bond::Price::Clean);
-            callSchedule.push_back(
-                ext::make_shared<Callability>(
-                                    myPrice,
-                                    Callability::Call,
-                                    callDate ));
-            callDate = nullCalendar.advance(callDate, 3, Months);
-        }
-{% endhighlight %}
-
-Now, we need an interest rate model for the callable bond because we need to take in two additional parameters; \mu as a mean reversion (3%) and volatility \sigma (12%). 
-
-{% highlight Python %}        
-        def value_bond(a, s, grid_points, bond): 
-            model = HullWhite(ts_handle, a, s)
-            engine = TreeCallableFixedRateBondEngine(model, grid_points) 
-            bond.setPricingEngine(engine)
-            return bond
-            
-        value_bond(0.03, 0.12, 40, bond) 
-        print("Bond price: ")
-        bond.cleanPrice()
-{% endhighlight %}
-
-![](https://user-images.githubusercontent.com/75659218/213588206-11fb5739-b695-469e-8036-7f2c21f29c9e.png)
-
-![](https://user-images.githubusercontent.com/75659218/213615844-72b3a17f-f75e-454b-af36-6551476d42d5.png)
-
-
-As we see the yield curve has a downward slope because if the volatility is increased, the bond value has a higher chance of being callable. Callable bonds are essentially option calls, so there is a decay factor that accounts for sensitive volatility levels (sigma) as it does get closer to maturity. Using the Macauley Duration formula, we can check volatility levels at any settlement period.
-![](https://user-images.githubusercontent.com/75659218/213620640-c87d00c3-d4a7-4b73-8d36-58b46cfabc33.png)
-
-
+#### Processes
+![image-4.png](attachment:image-4.png)
+![image-5.png](attachment:image-5.png)
         
         
         
