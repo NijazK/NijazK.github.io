@@ -15,9 +15,9 @@ These bonds generally come with certain restrictions on the call option. For exa
 
 Callable bonds are attractive products if interest rates are expected to fall. In this case, the issuer can redeem the callable bonds and issue new bonds with lower coupon rates.
 
-Example
+## Example
 
-Let's assume that AAPL (Apple Inc.) issues bonds with a face value of $1000 and a coupon rate of 5% while the current interest rate is 4% with a maturity of 10 years. This means that the bonds could be redeemed before maturity. From year 1 to year 5, there is no call option. Years 5-10 can be redeemed if interest rates decrease to refinance their debt and issue new bonds with more favorable coupon rates.
+Let's assume that AAPL (Apple Inc.) issues bonds with a face value of $1000 and a coupon rate of 5% while the current interest rate is 4% with a maturity of 10 years. This means that the bonds could be redeemed before maturity. From year 1 to year 5, there is no call option. Years 5-10 can be redeemed if interest rates decrease to refinance their debt and issue new bonds with more favorable coupon rates. The Hull-White model calculates the price of a derivative security as a function of the entire yield curve rather than a single rate (
 
 Basic Valuation 
 
@@ -26,8 +26,11 @@ Price(Callable Bond) = Price(Plain - Vanilla Bond) - Price(Call Option)
 Where
 
 * Price (Plain – Vanilla Bond) – the price of a plain-vanilla bond that shares similar features with the (callable) bond.
-
 * Price (Call Option) – the price of a call option to redeem the bond before maturity.
+
+## Pricing Callable Bonds with Hull White Single-Factor.
+
+Let's use the Hull-White model to price the Callable Bond. The Hull-White model assumes that short rates have a normal distribution and that the short rates are subject to mean reversion. Volatility is thus likely to be low when short rates are near zero, which is reflected in a larger mean reversion in the model. The Hull-White model calculates the price of a derivative security through a static yield curve (fixed rate). 
 
 QuantLib Implementation (Python)
 
