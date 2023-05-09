@@ -479,3 +479,5 @@ Hull, J. (2022). Options, futures, and other derivatives. Pearson.
 
 Kenton, W. (2023, May 1). Hull-white model: What it is, how it works. Investopedia. 
     https://www.investopedia.com/terms/h/hullwhite-model.asp 
+
+Ballabio, L. (2020). Implementing quantlib: Quantitative finance in C++: An inside look at the architecture of the Quantlib Library. A Lean Pub. 
