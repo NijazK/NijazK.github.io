@@ -30,15 +30,27 @@ Let's use the Hull-White model to price the Callable Bond. The Hull-White model 
 
 Hull White Single-Factor
 ![](https://github.com/NijazK/nijazk.github.io/assets/75659218/eb4d5d2c-44c6-4a39-b40f-b0bb02fa571d)
+
 dr is the change in the short-term interest rate over a small interval. 
 r is the short-term interest rate.
-Θ(t) is a function of time determining the average direction in which r moves, chosen such that movements in r are consistent with today's zero. coupon yield curve.
+Θ(t) is a function of time determining the average direction in which removes, chosen such that movements in r are consistent with today's zero. coupon yield curve.
 α is the mean reversion rate.
 dt is a small change in time.
 σ is the annual standard deviation of the short rate.
 W is the Brownian motion.
 
 Let's use the Hull-White model to price the Callable Bond. The Hull-White model assumes that short rates have a normal distribution and that the short rates are subject to mean reversion. Volatility is thus likely to be low when short rates are near zero, which is reflected in a larger mean reversion in the model. The Hull-White model calculates the price of a derivative security through a static yield curve (fixed rate). 
+
+Visualizing Hull-White using MATLAB.
+
+All screenshots were taken from Mathworks website. Available here https://www.mathworks.com/help/fininst/hullwhite1f.html
+
+![](https://github.com/NijazK/nijazk.github.io/assets/75659218/076c2f98-18a0-4d5f-be78-90087fe86a9e)
+
+![](https://github.com/NijazK/nijazk.github.io/assets/75659218/2e0fd6b0-b461-4263-8e2a-cc5050082389)
+
+We see that Hull-White assumes normal distribution and standard deviations with respect to the interest rate derivative.
+
 
 QuantLib Implementation (Python)
 
@@ -455,3 +467,6 @@ QuantLib Implementation (C++)
             return 1;
         }
     }
+
+## References 
+
