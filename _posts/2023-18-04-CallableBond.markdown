@@ -9,11 +9,7 @@ image2: /assets/article_images/2014-11-30-mediator_features/night-track-mobile.J
 ---
 Modeling a Callable Bond using QuantLib and Singleton Design Patterns
 ---
-A callable bond can also be viewed as a redeemable bond, meaning that the issuer can can redeem before it reaches maturity date. Another to look at this is as an American option. While European options do not let the buyer redeem before the maturity date, American options allow the buyer to redeem before maturity date.
-
-These bonds generally come with certain restrictions on the call option. For example, the bonds may not be able to be redeemed in a specified initial period of their lifespan. In addition, some bonds allow the redemption of the bonds only in the case of some extraordinary events.
-
-Callable bonds are attractive products if interest rates are expected to fall. In this case, the issuer can redeem the callable bonds and issue new bonds with lower coupon rates.
+A callable bond can also be viewed as a redeemable bond, meaning that the issuer can can redeem before it reaches maturity date. Another to look at this is as an American option. While European options do not let the buyer redeem before the maturity date, American options allow the buyer to redeem before maturity date. These bonds generally come with certain restrictions on the call option. For example, the bonds may not be able to be redeemed in a specified initial period of their lifespan. In addition, some bonds allow the redemption of the bonds only in the case of some extraordinary events. Callable bonds are attractive products if interest rates are expected to fall. In this case, the issuer can redeem the callable bonds and issue new bonds with lower coupon rates.
 
 ## Example
 
@@ -29,6 +25,18 @@ Where
 * Price (Call Option) – the price of a call option to redeem the bond before maturity.
 
 ## Pricing Callable Bonds with Hull White Single-Factor.
+
+Let's use the Hull-White model to price the Callable Bond. The Hull-White model assumes that short rates have a normal distribution and that the short rates are subject to mean reversion. Volatility is thus likely to be low when short rates are near zero, which is reflected in a larger mean reversion in the model. The Hull-White model calculates the price of a derivative security through a static yield curve (fixed rate). 
+
+Hull White Single-Factor
+![](https://github.com/NijazK/nijazk.github.io/assets/75659218/eb4d5d2c-44c6-4a39-b40f-b0bb02fa571d)
+dr is the change in the short-term interest rate over a small interval. 
+r is the short-term interest rate.
+Θ(t) is a function of time determining the average direction in which r moves, chosen such that movements in r are consistent with today's zero. coupon yield curve.
+α is the mean reversion rate.
+dt is a small change in time.
+σ is the annual standard deviation of the short rate.
+W is the Brownian motion.
 
 Let's use the Hull-White model to price the Callable Bond. The Hull-White model assumes that short rates have a normal distribution and that the short rates are subject to mean reversion. Volatility is thus likely to be low when short rates are near zero, which is reflected in a larger mean reversion in the model. The Hull-White model calculates the price of a derivative security through a static yield curve (fixed rate). 
 
