@@ -470,3 +470,12 @@ QuantLib Implementation (C++)
 
 ## References 
 
+HullWhite1F. Create Hull-White one-factor model - MATLAB. (n.d.). 
+    https://www.mathworks.com/help/fininst/hullwhite1f.html 
+
+Brigo, D., &amp; Mercurio, F. (2006). Interest rate models: Theory and practice. Springer Berlin Heidelberg. 
+
+Hull, J. (2022). Options, futures, and other derivatives. Pearson. 
+
+Kenton, W. (2023, May 1). Hull-white model: What it is, how it works. Investopedia. 
+    https://www.investopedia.com/terms/h/hullwhite-model.asp 
