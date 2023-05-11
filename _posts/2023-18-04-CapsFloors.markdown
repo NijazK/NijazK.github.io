@@ -9,6 +9,7 @@ image2: /assets/article_images/2014-11-30-mediator/night-track.jpg
 ---
 Modeling Caps and Floors 
 ---
+
 Caps
 
 A "cap" is a type of derivative that gives the holder the right, but not the obligation, to buy an underlying asset at a predetermined price on or before a specified date (the "expiration date"). The underlying asset in a cap can be anything from a stock or commodity to a currency or interest rate. For this example, let's say that an investor is concerned about a potential decline with the price of AAPL stock over the next ten months. The investor could purchase a 10-month AAPL stock price cap with a strike price of $125. If the price of AAPL stock falls below $125 at any point over the next ten months, the investor can exercise the option and buy the stock at $125, regardless of the actual market price. If the price of AAPL stock never falls below $125, the investor simply lets the option expire worthless.
