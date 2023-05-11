@@ -7,23 +7,23 @@ tags:
 image: /assets/article_images/2014-11-30-mediator/night-track.jpg
 image2: /assets/article_images/2014-11-30-mediator/night-track.jpg
 ---
-Modeling Caps and Floors 
+## Modeling Caps and Floors 
 ---
 
 
-Caps
+## Caps
 
 A "cap" is a type of derivative that gives the holder the right, but not the obligation, to buy an underlying asset at a predetermined price on or before a specified date (the "expiration date"). The underlying asset in a cap can be anything from a stock or commodity to a currency or interest rate. For this example, let's say that an investor is concerned about a potential decline with the price of AAPL stock over the next ten months. The investor could purchase a 10-month AAPL stock price cap with a strike price of $125. If the price of AAPL stock falls below $125 at any point over the next ten months, the investor can exercise the option and buy the stock at $125, regardless of the actual market price. If the price of AAPL stock never falls below $125, the investor simply lets the option expire worthless.
 
-Floors
+## Floors
 
 A "floor" is the opposite of a cap. It is a type of derivative that gives the holder the right, but not the obligation, to sell a underlying asset at a predetermined price on or before a specified date (the "expiration date"). As with a cap, the underlying asset in a floor can be anything from a stock or commodity to a currency or interest rate. For this example, let's say that an investor is concerned about a potential increase in the price of AAPL stock over the next ten months. The investor could purchase a 10-month AAPL stock price floor with a strike price of $125. If the price of AAPL stock rises above $125 at any point over the next six months, the investor can exercise the option and sell the stock at $125, regardless of the actual market price. If the price of AAPL stock never rises above $125, the investor simply lets the option expire worthless.
 
-Pricing
+## Pricing
 
 For this example, we price the cap and floor using constant volatility and we will use the Black-Scholes pricing engine. Also, this example does not price an equity cap and floor but rather an interest rate cap and floor. 
 
-QuantLib Implementation (Python)
+## QuantLib Implementation (Python)
 
     # # Caps and Floors
     #
