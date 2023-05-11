@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Modeling Caps and Floors"
-date:   2023-04-18 14:34:25
+date:   2023-05-05 14:34:25
 categories: jekyll update
 tags: 
 image: /assets/article_images/2014-11-30-mediator/night-track.jpg
