@@ -27,7 +27,8 @@ Black Model is used to price the interest rate cap and floor because of the log-
 ![](https://github.com/NijazK/nijazk.github.io/assets/75659218/e403c037-14ab-4071-9a28-4b69dd7688d2)
 ![](https://github.com/NijazK/nijazk.github.io/assets/75659218/0549d2ca-190c-4c8d-8129-1bef310325ad)
 ![](https://github.com/NijazK/nijazk.github.io/assets/75659218/8eb3ddcc-beb2-4e8c-91e9-ecd8171d9826)
-LIBOR rates equal to ![](https://github.com/NijazK/nijazk.github.io/assets/75659218/f5c7f3ce-8f2b-4454-8f4f-1fa878aca6bd)
+LIBOR rates equal to 
+![](https://github.com/NijazK/nijazk.github.io/assets/75659218/f5c7f3ce-8f2b-4454-8f4f-1fa878aca6bd)
 
 ## QuantLib Implementation (Python)
 
