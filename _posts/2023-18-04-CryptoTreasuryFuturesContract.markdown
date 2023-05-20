@@ -142,15 +142,13 @@ Above we used a fictional 6% coupon bond as the deliverable. In reality, the del
         ctd_price = ctd_info[2]
 
     print("%-30s = %lf" % ("Minimum Basis", minBasis)) 
-    print("%-30s = %lf" % ("Conversion Factor", ctd_cf)) 
     print("%-30s = %lf" % ("Coupon", ctd_info[0]))
     print("%-30s = %s" % ("Maturity", ctd_info[1])) 
     print("%-30s = %lf" % ("Price", ctd_info[2]))
     
     Minimum Basis                  = -1204.876684
-    Conversion Factor              = 10.277572
     Coupon                         = 2.250000
-    Maturity                       = November 15th, 2025
+    Maturity                       = December 15th, 2025
     Price                          = 100.375000
 
 ## Conclusion
