@@ -149,6 +149,58 @@ For this example, the tokenized deliverable is picked from a basket of securitie
     Coupon                         = 2.250000
     Maturity                       = December 15th, 2025
     Price                          = 100.375000
+    
+# Micro Options on Token Futures Contracts
+Options on token treasury futures (10 Yr Note ZNZ3) can be valued using the Black formula. Let us value a Call option maturing on December 25, 2025, with a strike of $1,119. The current futures price is 1,200 and the volatility is 20%. The risk free rate as of December 1, 2015 is 0.105%. Let us value this Call option as of December 1, 2015.
+
+    # Crypto Treasuries Futures Contracts
+    import QuantLib as ql
+    import math
+
+    calendar = ql.UnitedStates()
+    business_convention = ql.ModifiedFollowing
+    settlement_days = 0
+    dayCount = ql.ActualActual(ql.ActualActual.Bond)
+
+    interestRate = 0.0011
+    calcDate = ql.Date(1, 1, 2022)
+    yieldCurve = ql.FlatForward(calcDate, interestRate, dayCount, ql.Continuous)
+
+    ql.Settings.instance().evaluationDate = calcDate
+    T = 31/365
+
+    maturity = ql.Date(28, 1, 2023)
+
+    strike = 1000
+    spot = 25860
+    volatility = 0.20
+    type = ql.Option.Call
+
+    discount = yieldCurve.discount(maturity)
+
+    time = yieldCurve.dayCounter().yearFraction(calcDate, maturity)
+
+    stddev = volatility*math.sqrt(time)
+
+    strikepayoff = ql.PlainVanillaPayoff(type, strike)
+
+    black = ql.BlackCalculator(strikepayoff, spot, stddev, discount)
+
+    print("%-20s: %4.4f" %("Option values on Treasury Futures Put", black.value()))
+    print("%-20s: %4.4f" %("Delta", black.delta(spot)))
+    print("%-20s: %4.4f" %("Gamma", black.gamma(spot)))
+    print("%-20s: %4.4f" %("Theta", black.theta(spot, T)))
+    print("%-20s: %4.4f" %("Vega", black.vega(T)))
+    print("%-20s: %4.4f" %("Rho", black.rho( T)))
+
+    Option values on Treasury Futures Put: 24830.3928
+    Delta               : 0.9988
+    Gamma               : 0.0000
+    Theta               : 348.3931
+    Vega                : 0.0000
+    Rho                 : 84.8304
+
+
 
 ## Conclusion
 In this article, we created a tokenized treasury futures contract from an underlying U.S Treasury note. We looked into understanding and valuing treasury futures contracts. We used the QuantLib FixedRateBondForward class in order to model the tokenized futures contract. In addition, we also used synthetic market data to properly structure the tokenized futures contract between two parties.
