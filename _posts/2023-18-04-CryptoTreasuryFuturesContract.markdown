@@ -21,10 +21,10 @@ Let's value treasury futures contract using QuantLib. The treasury futures contr
 As a first step, we build the treasury curve out of the treasury securities.
 
 ## Treasury Futures
-Here we want to understand how to model tokenized treasury futures contract. Let us look at the ZNZ3, we'll call our tokenized treasury futures at 10-year (CZNZ3). The tokenized treasury futures on the 10 year note for delivery in December 2025. The notional deliverable is a 10-year 6% coupon note. Therefore, our tokenized treasury future is a 10-year note that matures on December 2025.
+Here we want to understand how to model tokenized treasury futures contract. Let us look at the ZNZ3, we'll call our tokenized treasury futures a 10-year (CZNZ3). The tokenized treasury futures on the 10 year note for delivery in December 2025. The notional deliverable is a 10-year 6% coupon note. Therefore, our tokenized treasury future is a 10-year note that matures on December 2025.
 
 ## Cheapest To Deliver
-For this example, the tokenized deliverable is picked from a basket of securities based on what is the cheapest to deliver. The seller of the token futures contract has to buy the delivery security from the crypto exchange and sell it at an adjusted futures price. The adjusted futures price is given as: Adjusted Futures Price = Futures Price x Conversion Factor The gain or loss to the seller is given by the basis, Basis = Cash Price - Adjusted Futures Price. So the cheapest to deliver is expected to be the security with the lowest basis. The conversion factor for a security is the price of the security with a 6% yield. Let us look at a basket of securities that is underlying this futures contract to understand this aspect.
+For this example, the tokenized deliverable is picked from a basket of securities based on what is the cheapest to deliver. The seller of the token futures contract has to buy the delivery security from the crypto exchange and sell it at an adjusted futures price. Referencing the CME, the adjusted price is: Adjusted Futures Price = Futures Price x Conversion Factor The gain or loss to the seller is given by the basis, Basis = Cash Price - Adjusted Futures Price. So the cheapest to deliver is expected to be the security with the lowest basis. The conversion factor for a security is the price of the security with a 6% yield. Let us look at a basket of securities that is underlying this futures contract to understand this aspect.
 
 ## Code
 
@@ -141,10 +141,10 @@ For this example, the tokenized deliverable is picked from a basket of securitie
         ctd_bond,ctd_cf = securities[minBasisIndex] 
         ctd_price = ctd_info[2]
 
-    print("%-30s = %lf" % ("Minimum Basis", minBasis)) 
-    print("%-30s = %lf" % ("Coupon", ctd_info[0]))
-    print("%-30s = %s" % ("Maturity", ctd_info[1])) 
-    print("%-30s = %lf" % ("Price", ctd_info[2]))
+    print("%-20s: %4.4f" % ("Minimum Basis", minBasis)) 
+    print("%-20s: %4.4f" % ("Coupon", ctd_info[0]))
+    print("%-20s: %4.4f" % ("Maturity", ctd_info[1])) 
+    print("%-20s: %4.4f" % ("Price", ctd_info[2]))
     
     Minimum Basis                  = -1204.876684
     Coupon                         = 2.250000
