@@ -43,8 +43,8 @@ For this example, the tokenized deliverable is picked from a basket of securitie
     coupon = ql.Period(ql.Semiannual)
 
     ## Build Yield Curve
-    marketQuotes = [99.1092, 99.5352,  99.9083, 99.6439, 99.0276,
-              99.6987, 99.0330, 99.1297, 100.5862, 100.3765]
+    marketQuotes = [999.1092, 999.5352,  999.9083, 999.6439, 999.0276,
+              999.6987, 999.0330, 999.1297, 1000.5862, 1000.3765]
 
     couponRates = [0.0000, 0.0000, 0.0000, 0.0000, 0.00875,
                     0.0125, 0.01625, 0.02, 0.0225, 0.03]
@@ -91,7 +91,7 @@ For this example, the tokenized deliverable is picked from a basket of securitie
     bondEngine = ql.DiscountingBondEngine(yieldCurveHandle)
     deliverable.setPricingEngine(bondEngine)
 
-    futures_price = 127.00
+    futures_price = 1000.00
     cleanPrice = futures_price*yieldCurve.discount(deliveryDate)
     zspread = ql.BondFunctions.zSpread(deliverable, cleanPrice, yieldCurve, dayCount, ql.Compounded, ql.Semiannual, calcDate) * 10000 
     print("Z-Spread =%3.0fbp" % (zspread))
