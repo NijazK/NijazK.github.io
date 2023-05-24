@@ -24,7 +24,7 @@ As a first step, we build the treasury curve out of the treasury securities.
 Here we want to understand how to model tokenized treasury futures contract. Let us look at the ZNZ3, we'll call our tokenized treasury futures at 10-year (CZNZ3). The tokenized treasury futures on the 10 year note for delivery in December 2025. The notional deliverable is a 10-year 6% coupon note. Therefore, our tokenized treasury future is a 10-year note that matures on December 2025.
 
 ## Cheapest To Deliver
-Above we used a fictional 6% coupon bond as the deliverable. In reality, the deliverable is picked from a basket of securities based on what is the cheapest to deliver. Cheapest to deliver is not the Treasury Futures Contract 182 cheapest in price. The seller of the futures contract, has to buy the delivery security from the market and sell it at an adjusted futures price. The adjusted futures price is given as: Adjusted Futures Price = Futures Price x Conversion Factor The gain or loss to the seller is given by the basis, Basis = Cash Price - Adjusted Futures Price. So the cheapest to deliver is expected to be the security with the lowest basis. The conversion factor for a security is the price of the security with a 6% yield. Let us look at a basket of securities that is underlying this futures contract to understand this aspect.
+For this example, the tokenized deliverable is picked from a basket of securities based on what is the cheapest to deliver. The seller of the token futures contract has to buy the delivery security from the crypto exchange and sell it at an adjusted futures price. The adjusted futures price is given as: Adjusted Futures Price = Futures Price x Conversion Factor The gain or loss to the seller is given by the basis, Basis = Cash Price - Adjusted Futures Price. So the cheapest to deliver is expected to be the security with the lowest basis. The conversion factor for a security is the price of the security with a 6% yield. Let us look at a basket of securities that is underlying this futures contract to understand this aspect.
 
 ## Code
 
@@ -72,7 +72,7 @@ Above we used a fictional 6% coupon bond as the deliverable. In reality, the del
     yieldCurve = ql.PiecewiseCubicZero(calcDate, bondHelpers, dayCount) 
     yieldCurveHandle = ql.YieldTermStructureHandle(yieldCurve)   
 
-    def treasuryFuturesContract(issueDates, bondMaturity, couponRate, couponFrequency = ql.Period(6, ql.Months), dayCount = ql.ActualActual(ql.ActualActual.Bond), calendar = ql.UnitedStates()):
+    def tokenTreasuryFuturesContract(issueDates, bondMaturity, couponRate, couponFrequency = ql.Period(6, ql.Months), dayCount = ql.ActualActual(ql.ActualActual.Bond), calendar = ql.UnitedStates()):
         faceAmount = 100000.
         settlement = 0
         schedule = ql.Schedule(issueDates, bondMaturity, couponFrequency, calendar, ql.ModifiedFollowing, ql.ModifiedFollowing, ql.DateGeneration.Forward, False)
@@ -87,7 +87,7 @@ Above we used a fictional 6% coupon bond as the deliverable. In reality, the del
     couponFrequency = ql.Period(6, ql.Months)
     couponRate = 5/100.
 
-    deliverable = treasuryFuturesContract(issueDates, bondMaturity, couponRate, couponFrequency, dayCount, calendar)
+    deliverable = tokenTreasuryFuturesContract(issueDates, bondMaturity, couponRate, couponFrequency, dayCount, calendar)
     bondEngine = ql.DiscountingBondEngine(yieldCurveHandle)
     deliverable.setPricingEngine(bondEngine)
 
