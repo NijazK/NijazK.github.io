@@ -14,8 +14,7 @@ US Treasury Bond futures and options are deeply liquid and efficient tools for h
 As mentioned above, Treasuries ad other option derivatives can play a vital role in risk management due to the efficiency and adjustments for portfolio rebalance.
 
 # Design Architecture
-## Tokenized Treasury Futures Contract
-Let's value treasury futures contract using QuantLib. The treasury futures contract gives the buyer the right to buy the underlying by the time the contract expires. The underlying is usually delivered from a basket of securities. So in order to properly value the futures contract, we would need to find the deliverable. Here we start by doing a naive calculation by constructing a fictional security. We will see what is wrong about this approach. As a next step we will perform the cheapest to deliver calculation and subsequently use that deliverable to value the same contract.
+Lets assume that the token deliverable is actually a 6% coupon 10-year note issued as of the calculation date. Let us construct a 10 year token treasury note and value this security. The futures price for the ZNZ3 is $1000.00.
 
 ## Yield Curve
 As a first step, we build the treasury curve out of the tokenized treasury securities.
