@@ -17,8 +17,8 @@ As mentioned above, Treasuries ad other option derivatives can play a vital role
 ## Tokenized Treasury Futures Contract
 Let's value treasury futures contract using QuantLib. The treasury futures contract gives the buyer the right to buy the underlying by the time the contract expires. The underlying is usually delivered from a basket of securities. So in order to properly value the futures contract, we would need to find the deliverable. Here we start by doing a naive calculation by constructing a fictional security. We will see what is wrong about this approach. As a next step we will perform the cheapest to deliver calculation and subsequently use that deliverable to value the same contract.
 
-## Build Yield Curve
-As a first step, we build the treasury curve out of the treasury securities.
+## Yield Curve
+As a first step, we build the treasury curve out of the tokenized treasury securities.
 
 ## Treasury Futures
 Here we want to understand how to model tokenized treasury futures contract. Let us look at the ZNZ3, we'll call our tokenized treasury futures a 10-year (CZNZ3). The tokenized treasury futures on the 10 year note for delivery in December 2025. The notional deliverable is a 10-year 6% coupon note. Therefore, our tokenized treasury future is a 10-year note that matures on December 2025.
